@@ -1,0 +1,65 @@
+spec: API Commons Rate Limits 0.1
+provider: Tidio
+providerId: tidio
+created: 2026-06-12
+modified: 2026-06-12
+
+description: >
+  Tidio enforces per-project request rate limits on the OpenAPI REST endpoints to
+  prevent abuse and ensure availability for all users. Limits are scoped to the
+  pricing plan of the project. Webhooks and Widget SDK are not subject to these
+  REST rate limits. OpenAPI is unavailable on the Free plan.
+
+limits:
+  - plan: Free Trial
+    scope: per project
+    requests: 10
+    period: minute
+    note: Applies during trial period before purchasing a plan
+
+  - plan: Starter
+    scope: per project
+    requests: 10
+    period: minute
+
+  - plan: Growth
+    scope: per project
+    requests: 10
+    period: minute
+
+  - plan: Lyro AI (paid add-on, any quota)
+    scope: per project
+    requests: 10
+    period: minute
+    note: Product-specific endpoints only; other endpoints require Plus or Premium
+
+  - plan: Plus
+    scope: per project
+    requests: 60
+    period: minute
+
+  - plan: Premium
+    scope: per project
+    requests: 120
+    period: minute
+
+headers:
+  - name: x-ratelimit-limit
+    description: The maximum number of requests a client can make in the current rate-limit window
+    type: integer
+
+  - name: x-ratelimit-remaining
+    description: The number of remaining requests the client can make before hitting the rate limit ceiling
+    type: integer
+
+throttled:
+  httpStatus: 429
+  retryAfter: false
+  retryAfterHeader: null
+  body:
+    format: application/json
+    message: "You have reached the limit of allowed attempts"
+  note: >
+    When the 429 status is returned, clients should pause requests and
+    retry after the current rate-limit window resets. Inspect
+    x-ratelimit-remaining to track remaining quota proactively.

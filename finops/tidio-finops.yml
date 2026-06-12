@@ -1,0 +1,98 @@
+spec: FinOps Framework 1.0
+provider: Tidio
+providerId: tidio
+created: 2026-06-12
+modified: 2026-06-12
+
+billingModel: hybrid
+billingModelDescription: >
+  Tidio uses a hybrid billing model. Core plans are subscription-based (flat monthly/annual
+  fee) gating a capped number of billable conversations. AI (Lyro) and automation (Flows)
+  add-ons are metered and sold in conversation or visitor-reached quota buckets. The Premium
+  tier also offers pay-per-resolution billing for the Lyro AI managed service.
+
+focusColumns:
+  - column: BillingAccountId
+    description: Tidio project ID associated with the subscription
+  - column: ServiceName
+    value: Tidio
+  - column: ServiceCategory
+    value: Customer Service / CX Platform
+  - column: ChargeType
+    values:
+      - Usage
+      - Tax
+      - Adjustment
+  - column: BillingPeriodStartDate
+    description: First day of the monthly or annual billing period
+  - column: BillingPeriodEndDate
+    description: Last day of the billing period
+  - column: UsageQuantity
+    description: Number of billable conversations, Lyro AI conversations, or Flows visitors reached consumed in the period
+  - column: UsageUnit
+    values:
+      - conversation
+      - lyro_conversation
+      - flows_visitor
+  - column: BilledCost
+    description: Total charge for the period including plan fees and add-on overages
+  - column: ListUnitPrice
+    description: Per-unit cost for metered add-on quota buckets
+
+meters:
+  - name: Billable Conversations
+    unit: conversation
+    description: >
+      A conversation is counted as billable when a real visitor or customer sends a
+      message to the widget or email inbox. Internal test conversations and spam are
+      excluded. Unused quota does not roll over between billing periods.
+    plans:
+      - Free: 50/month included
+      - Starter: 100/month included
+      - Growth: scales 250–2,000/month
+      - Plus: custom limit
+      - Premium: custom limit
+
+  - name: Lyro AI Conversations
+    unit: lyro_conversation
+    description: >
+      A Lyro AI conversation is counted each time the AI agent handles an end-user
+      session. Metered per quota bucket purchased as an add-on or included in
+      Premium. Pay-per-resolution variant available on Premium.
+    addonStartingPrice:
+      amount: 39
+      currency: USD
+      period: month
+      quota: 50
+
+  - name: Flows Visitors Reached
+    unit: flows_visitor
+    description: >
+      A Flows visitor is counted each time a proactive automation (Flow) is triggered
+      for a unique visitor session. Sold in quota buckets as an add-on or bundled
+      in entry plans.
+    addonStartingPrice:
+      amount: 29
+      currency: USD
+      period: month
+      quota: 2000
+
+principles:
+  - name: Visibility
+    description: >
+      Monitor conversation, Lyro AI, and Flows usage from the Tidio Analytics
+      dashboard to track consumption against plan quotas and anticipate add-on costs.
+  - name: Allocation
+    description: >
+      Use Tidio's project/multiproject feature (Plus and above) to allocate costs
+      across business units or brands by separating workspaces.
+  - name: Optimization
+    description: >
+      Evaluate Lyro AI resolution rate; the Premium pay-per-resolution model can be
+      more cost-effective than per-conversation billing at high volumes with strong
+      AI resolution performance.
+  - name: Forecasting
+    description: >
+      Conversation volume is the primary cost driver. Historical conversation trends
+      from Analytics should inform plan tier selection and add-on quota purchases
+      to avoid overage surprises.

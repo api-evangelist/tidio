@@ -1,0 +1,113 @@
+aid: tidio
+name: Tidio
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/tidio/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: "0.19"
+description: >
+  Tidio is a customer service platform used by over 300,000 businesses that
+  combines live chat, AI-powered chatbots (Lyro AI), and email ticketing into a
+  unified support workspace. The platform exposes a REST OpenAPI for managing
+  contacts, conversations, and tickets, a Webhooks system for real-time event
+  notifications, and a JavaScript Widget SDK for front-end customization. API
+  access uses paired client-id and client-secret headers and is gated by plan
+  tier, with full OpenAPI access available on Plus and Premium plans. Rate
+  limits range from 10 requests per minute on entry plans to 120 requests per
+  minute on Premium. Tidio also offers an AI automation product called Flows
+  for proactive visitor engagement via a no-code builder.
+tags:
+  - live chat
+  - chatbot
+  - customer service
+  - AI
+  - help desk
+  - ticketing
+  - conversations
+  - contacts
+  - webhooks
+  - widget
+
+apis:
+  - name: Tidio OpenAPI (REST)
+    description: >
+      REST API for managing contacts, conversations, tickets, and operators.
+      Requires Plus or Premium plan for full access; Lyro AI plan grants access
+      to product-specific endpoints. Authentication uses X-Tidio-Openapi-Client-Id
+      and X-Tidio-Openapi-Client-Secret headers.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.tidio.com/docs/openapi-enable
+    baseURL: https://api.tidio.co
+    tags:
+      - REST
+      - contacts
+      - conversations
+      - tickets
+    properties:
+      - type: Documentation
+        url: https://developers.tidio.com/docs/openapi-enable
+      - type: RateLimits
+        url: https://developers.tidio.com/docs/openapi-rate-limiting
+
+  - name: Tidio Webhooks
+    description: >
+      Real-time event notifications delivered via HTTP POST to a configured
+      endpoint. Webhooks are available exclusively on Plus and Premium plans and
+      are configured via the Developer panel. Supports signature verification
+      and event filtering.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.tidio.com/docs/webhooks-introduction
+    baseURL: https://api.tidio.co
+    tags:
+      - webhooks
+      - real-time
+      - events
+    properties:
+      - type: Documentation
+        url: https://developers.tidio.com/docs/webhooks-introduction
+      - type: WebhookStructure
+        url: https://developers.tidio.com/docs/webhooks-structure
+
+  - name: Tidio Widget SDK
+    description: >
+      JavaScript SDK for embedding and customizing the Tidio chat widget on
+      websites. Supports user tracking, custom bot triggers, and behavioral
+      customization. Available to all plan tiers.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.tidio.com/docs/widget-introduction
+    baseURL: https://code.tidio.co
+    tags:
+      - widget
+      - JavaScript
+      - SDK
+      - frontend
+    properties:
+      - type: Documentation
+        url: https://developers.tidio.com/docs/widget-introduction
+
+common:
+  - type: Website
+    url: https://www.tidio.com/
+  - type: Documentation
+    url: https://developers.tidio.com/
+  - type: Blog
+    url: https://www.tidio.com/blog/
+  - type: Pricing
+    url: https://www.tidio.com/pricing/
+  - type: StatusPage
+    url: https://status.tidio.com/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/tidio-ltd
+  - type: X
+    url: https://twitter.com/tidiochat
+  - type: Plans
+    url: plans/tidio-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tidio-rate-limits.yml
+  - type: FinOps
+    url: finops/tidio-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

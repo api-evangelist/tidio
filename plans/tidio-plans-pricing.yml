@@ -1,0 +1,207 @@
+spec: API Commons Plans 0.1
+provider: Tidio
+providerId: tidio
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+type: freemium
+
+plans:
+  - name: Free
+    description: Entry-level plan for small teams to evaluate Tidio live chat.
+    type: free
+    pricing:
+      amount: 0
+      currency: USD
+      period: month
+    quotas:
+      - name: Billable Conversations
+        description: Number of conversations handled per month
+        quota: 50
+        metered: false
+      - name: Seats
+        description: Number of agent seats included
+        quota: 10
+        metered: false
+      - name: Lyro AI Conversations
+        description: AI chatbot conversations per month
+        quota: 0
+        metered: false
+    features:
+      - name: Live Chat
+        included: true
+      - name: Ticketing
+        included: false
+      - name: OpenAPI Access
+        included: false
+      - name: Webhooks
+        included: false
+      - name: Flows
+        included: false
+
+  - name: Starter
+    description: For small businesses needing more conversations and basic automation.
+    type: paid
+    pricing:
+      amount: 29
+      currency: USD
+      period: month
+      note: billed monthly; $24.17/mo when billed annually ($290/yr)
+    quotas:
+      - name: Billable Conversations
+        description: Number of conversations handled per month
+        quota: 100
+        metered: false
+      - name: Seats
+        description: Number of agent seats included
+        quota: 10
+        metered: false
+      - name: Lyro AI Conversations (one-off)
+        description: Complimentary Lyro AI conversations included at signup
+        quota: 50
+        metered: false
+      - name: Flows Visitors Reached
+        description: Visitors reached by proactive Flows automations per month
+        quota: 100
+        metered: false
+    features:
+      - name: Live Chat
+        included: true
+      - name: Ticketing
+        included: true
+      - name: OpenAPI Access
+        included: false
+      - name: Webhooks
+        included: false
+
+  - name: Growth
+    description: For growing teams needing higher conversation volumes and analytics.
+    type: paid
+    pricing:
+      amount: 59
+      currency: USD
+      period: month
+      note: starts at $49.17/mo billed annually ($590/yr); scales with conversation volume up to $349/mo
+    quotas:
+      - name: Billable Conversations
+        description: Number of conversations handled per month (scales to 2,000)
+        quota: 250
+        metered: true
+      - name: Seats
+        description: Number of agent seats included
+        quota: 10
+        metered: false
+    features:
+      - name: Live Chat
+        included: true
+      - name: Ticketing
+        included: true
+      - name: Advanced Analytics
+        included: true
+      - name: Automatic Chat Assignment
+        included: true
+      - name: Macros
+        included: true
+      - name: OpenAPI Access
+        included: false
+      - name: Webhooks
+        included: false
+
+  - name: Plus
+    description: For mid-market teams requiring full API access, webhooks, and dedicated support.
+    type: paid
+    pricing:
+      amount: 749
+      currency: USD
+      period: month
+      note: custom conversation limits; contact sales for exact seat pricing
+    quotas:
+      - name: Billable Conversations
+        description: Custom conversation limit negotiated at contract
+        quota: -1
+        metered: true
+      - name: API Rate Limit
+        description: Requests per minute per project
+        quota: 60
+        metered: false
+    features:
+      - name: Live Chat
+        included: true
+      - name: Ticketing
+        included: true
+      - name: OpenAPI Access
+        included: true
+      - name: Webhooks
+        included: true
+      - name: Departments
+        included: true
+      - name: Multiproject Support
+        included: true
+      - name: Dedicated Success Manager
+        included: true
+      - name: Live Chat Support
+        included: true
+
+  - name: Premium
+    description: Enterprise plan with managed AI, SSO, compliance, and highest rate limits.
+    type: enterprise
+    pricing:
+      amount: 2999
+      currency: USD
+      period: month
+      note: custom pricing; starting point from $2,999/mo; contact sales
+    quotas:
+      - name: Lyro AI Conversations
+        description: Managed AI conversations with guaranteed resolution rate
+        quota: 3000
+        metered: true
+      - name: API Rate Limit
+        description: Requests per minute per project
+        quota: 120
+        metered: false
+    features:
+      - name: Live Chat
+        included: true
+      - name: Ticketing
+        included: true
+      - name: OpenAPI Access
+        included: true
+      - name: Webhooks
+        included: true
+      - name: Lyro AI Managed Service
+        included: true
+      - name: Pay-per-Resolution Billing
+        included: true
+      - name: SSO
+        included: true
+      - name: Compliance
+        included: true
+      - name: Slack Support
+        included: true
+
+addons:
+  - name: Lyro AI Agent
+    description: AI chatbot add-on sold by conversation quota, available standalone or bundled.
+    type: metered
+    pricing:
+      amount: 39
+      currency: USD
+      period: month
+      note: starts at $32.50/mo billed annually for 50 conversations; scales with quota
+    quotas:
+      - name: Lyro AI Conversations
+        quota: 50
+        metered: true
+
+  - name: Flows
+    description: Proactive automation tool sold by visitors reached quota.
+    type: metered
+    pricing:
+      amount: 29
+      currency: USD
+      period: month
+      note: starts at $24.17/mo billed annually for 2,000 visitors reached
+    quotas:
+      - name: Flows Visitors Reached
+        quota: 2000
+        metered: true
