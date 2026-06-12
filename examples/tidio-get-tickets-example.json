@@ -1,0 +1,32 @@
+{
+  "tickets": [
+    {
+      "id": 10001,
+      "link": "https://www.tidio.com/panel/tickets/10001",
+      "subject": "Cannot access my account",
+      "contact_id": "a1b4ca4c-1108-4432-b256-1e4cf2bf6f9e",
+      "contact_email": "jane.smith@example.com",
+      "priority": "urgent",
+      "status": "open",
+      "assigned_operator_id": "d7f3b2a1-9c4e-4f87-b2d1-3a5e6f7c8d9e",
+      "assigned_department_id": "e8a4c3b2-0d5f-4g98-c3e2-4b6f7g8h9i0j",
+      "custom_channel_id": null
+    },
+    {
+      "id": 10002,
+      "link": "https://www.tidio.com/panel/tickets/10002",
+      "subject": "Billing question about Premium plan",
+      "contact_id": "b2c5db5d-2219-5543-c367-2f5dg3cg7g1f",
+      "contact_email": "john.doe@example.com",
+      "priority": "normal",
+      "status": "pending",
+      "assigned_operator_id": null,
+      "assigned_department_id": "e8a4c3b2-0d5f-4g98-c3e2-4b6f7g8h9i0j",
+      "custom_channel_id": null
+    }
+  ],
+  "meta": {
+    "cursor": null,
+    "limit": 25
+  }
+}

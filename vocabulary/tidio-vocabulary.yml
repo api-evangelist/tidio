@@ -1,0 +1,117 @@
+vocabulary:
+  title: Tidio API Vocabulary
+  description: Key terms and concepts used across the Tidio API surface.
+  source: https://developers.tidio.com/
+  terms:
+
+    - term: Contact
+      definition: >
+        A website visitor who has interacted with the Tidio widget and been
+        identified by at least one of: name, email address, or phone number.
+        Contacts may have custom properties and associated conversations.
+      related: [distinct_id, properties, email_consent]
+
+    - term: distinct_id
+      definition: >
+        An external system identifier that allows operators to link a Tidio
+        contact to a record in another system (e.g., CRM, database). Maximum
+        55 characters.
+
+    - term: email_consent
+      definition: >
+        Indicates whether a contact has consented to receive marketing email.
+        Enum values: subscribed or unsubscribed.
+
+    - term: Ticket
+      definition: >
+        A record of a more complex conversation between operators and customers
+        that often requires additional interactions or cannot be closed in a
+        single chat session. Typically includes email and internal messages.
+      related: [priority, status, TicketMessage]
+
+    - term: priority
+      definition: >
+        Urgency level of a ticket. Enum values: low, normal, urgent.
+
+    - term: status
+      definition: >
+        Workflow state of a ticket. Enum values: open, pending, solved.
+
+    - term: TicketMessage
+      definition: >
+        A single message within a ticket, identified by a ULID. Can be public
+        (visible to the contact) or internal (operator-only note).
+
+    - term: Operator
+      definition: >
+        A chat agent or customer service representative who interacts with
+        contacts in real-time. Operators can have roles: owner, admin,
+        chat_agent, moderator, or custom.
+
+    - term: Department
+      definition: >
+        A team or group of operators that handles specific types of customer
+        inquiries. The General department is the default and contains all
+        operators.
+
+    - term: Lyro
+      definition: >
+        Tidio's AI agent product that answers customer questions automatically
+        using data sources (QA pairs, websites, PDFs, Zendesk help centers).
+        Available on the Lyro AI plan.
+
+    - term: LyroDataSource
+      definition: >
+        A knowledge source used by Lyro to answer customer questions. Can be a
+        folder (website, PDF, Zendesk HC) or an individual QA pair. Organized
+        in a two-level hierarchy.
+
+    - term: kind
+      definition: >
+        Top-level classification of a Lyro data source. Enum values: folder
+        (grouping of scraped/imported content) or qa (individual question-answer
+        pair).
+
+    - term: cursor
+      definition: >
+        A pagination token returned in list API responses. Pass the cursor value
+        from the previous response to fetch the next page. A null cursor
+        indicates the last page.
+
+    - term: ULID
+      definition: >
+        Universally Unique Lexicographically Sortable Identifier. Used as the
+        message_id for ticket messages (e.g., 01HAVMVKF90KH3EC0HK2T6QYP6).
+
+    - term: Widget SDK
+      definition: >
+        The JavaScript SDK (loaded from code.tidio.co) that embeds the Tidio
+        chat widget on websites. Supports visitor tracking, custom bot triggers,
+        and behavioral customization.
+
+    - term: Webhook
+      definition: >
+        An HTTP POST notification sent by Tidio to a configured endpoint when
+        specific platform events occur. Available exclusively on Plus and
+        Premium plans. Note: changes made via OpenAPI do not trigger webhooks.
+
+    - term: X-Tidio-Openapi-Client-Id
+      definition: >
+        Required authentication header containing the client identifier for
+        OpenAPI access. Paired with X-Tidio-Openapi-Client-Secret.
+
+    - term: X-Tidio-Openapi-Client-Secret
+      definition: >
+        Required authentication header containing the client secret for
+        OpenAPI access. Paired with X-Tidio-Openapi-Client-Id.
+
+    - term: Flows
+      definition: >
+        Tidio's no-code AI automation product for proactive visitor engagement.
+        Allows creating triggered sequences based on visitor behavior without
+        writing code.
+
+    - term: email_consent
+      definition: >
+        Subscription status for a contact's email marketing preferences.
+        Values: subscribed or unsubscribed.

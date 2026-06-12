@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "tidio": "https://developers.tidio.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Contact": "schema:Person",
+    "id": "@id",
+    "first_name": "schema:givenName",
+    "last_name": "schema:familyName",
+    "email": "schema:email",
+    "phone": "schema:telephone",
+    "country": "schema:addressCountry",
+    "city": "schema:addressLocality",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "distinct_id": "tidio:distinctId",
+    "language": "schema:inLanguage",
+    "email_consent": "tidio:emailConsent",
+    "properties": "tidio:customProperties",
+
+    "Ticket": "schema:Question",
+    "subject": "schema:name",
+    "status": "schema:status",
+    "priority": "tidio:priority",
+    "link": "schema:url",
+    "contact_id": "tidio:contactId",
+    "contact_email": "tidio:contactEmail",
+    "assigned_operator_id": "tidio:assignedOperatorId",
+    "assigned_department_id": "tidio:assignedDepartmentId",
+    "messages": "schema:hasPart",
+
+    "Operator": "schema:Person",
+    "role": "schema:roleName",
+    "active": "tidio:isActive",
+    "picture": "schema:image",
+    "last_seen": {
+      "@id": "tidio:lastSeen",
+      "@type": "xsd:dateTime"
+    },
+
+    "Department": "schema:Organization",
+    "name": "schema:name",
+
+    "LyroDataSource": "schema:CreativeWork",
+    "title": "schema:name",
+    "content": "schema:text",
+    "source_url": "schema:url",
+    "kind": "tidio:dataSourceKind",
+    "origin": "tidio:dataSourceOrigin",
+    "used_by_lyro": "tidio:usedByLyro",
+    "used_by_copilot": "tidio:usedByCopilot",
+    "sync_status": "tidio:syncStatus",
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "Product": "schema:Product",
+    "url": "schema:url",
+    "image_url": "schema:image",
+    "vendor": "schema:brand",
+    "product_type": "schema:category",
+    "sku": "schema:sku",
+    "barcode": "schema:gtin",
+    "price": "schema:price",
+    "default_currency": "schema:priceCurrency",
+    "description": "schema:description",
+
+    "cursor": "tidio:paginationCursor",
+    "limit": "tidio:paginationLimit",
+    "meta": "tidio:paginationMeta"
+  }
+}

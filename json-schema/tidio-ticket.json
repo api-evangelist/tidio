@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tidio/main/json-schema/tidio-ticket.json",
+  "title": "Tidio Ticket",
+  "description": "A support ticket representing a complex conversation between operators and customers.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique ticket identifier."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "Direct URL to view the ticket in the Tidio panel."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Ticket title / subject."
+    },
+    "contact_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the associated contact."
+    },
+    "contact_email": {
+      "type": ["string", "null"],
+      "format": "email",
+      "description": "Email address used for ticket correspondence."
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "urgent"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "pending", "solved"]
+    },
+    "assigned_operator_id": {
+      "type": ["string", "null"],
+      "format": "uuid"
+    },
+    "assigned_department_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "custom_channel_id": {
+      "type": ["string", "null"],
+      "description": "Identifier of an associated custom channel."
+    },
+    "messages": {
+      "type": "array",
+      "description": "Messages array (present only in ticket detail endpoint).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message_id": {
+            "type": "string",
+            "description": "ULID format identifier."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "author_type": {
+            "type": "string",
+            "enum": ["operator", "contact"]
+          },
+          "author_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "message_type": {
+            "type": "string",
+            "enum": ["internal", "public"]
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["id", "subject", "contact_id", "priority", "status"]
+}

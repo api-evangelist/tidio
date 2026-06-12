@@ -49,6 +49,8 @@ apis:
         url: https://developers.tidio.com/docs/openapi-enable
       - type: RateLimits
         url: https://developers.tidio.com/docs/openapi-rate-limiting
+      - type: OpenAPI
+        url: openapi/tidio-openapi-openapi.yml
 
   - name: Tidio Webhooks
     description: >
@@ -107,6 +109,14 @@ common:
     url: rate-limits/tidio-rate-limits.yml
   - type: FinOps
     url: finops/tidio-finops.yml
+  - type: Vocabulary
+    url: vocabulary/tidio-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/tidio-context.jsonld
+  - type: BlogRSS
+    url: https://www.tidio.com/feed/
+  - type: Blogs
+    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane

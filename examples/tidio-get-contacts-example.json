@@ -1,0 +1,31 @@
+{
+  "contacts": [
+    {
+      "id": "a1b4ca4c-1108-4432-b256-1e4cf2bf6f9e",
+      "distinct_id": "ext-user-001",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "email": "jane.smith@example.com",
+      "phone": "+1-555-555-0101",
+      "language": "en",
+      "country": "US",
+      "city": "San Francisco",
+      "created_at": "2024-03-15T10:30:00Z",
+      "email_consent": "subscribed",
+      "properties": [
+        {
+          "name": "plan",
+          "value": "premium"
+        },
+        {
+          "name": "company",
+          "value": "Acme Corp"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "cursor": "aWRfX2U2YTgyYTc0LTExNzAtNGY1Ny1hMDMxLWIzNmYzZjZiYzA5Mw==",
+    "limit": 25
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tidio/main/json-schema/tidio-contact.json",
+  "title": "Tidio Contact",
+  "description": "A website visitor who has interacted with the Tidio widget and been identified.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique contact identifier."
+    },
+    "distinct_id": {
+      "type": ["string", "null"],
+      "description": "External system identifier for the contact."
+    },
+    "first_name": {
+      "type": ["string", "null"],
+      "maxLength": 127
+    },
+    "last_name": {
+      "type": ["string", "null"],
+      "maxLength": 127
+    },
+    "email": {
+      "type": ["string", "null"],
+      "format": "email"
+    },
+    "phone": {
+      "type": ["string", "null"],
+      "maxLength": 155
+    },
+    "language": {
+      "type": ["string", "null"],
+      "description": "ISO 639-1 language code (e.g., en, de, fr)."
+    },
+    "country": {
+      "type": ["string", "null"],
+      "description": "ISO 3166 Alpha-2 country code (e.g., US, GB, DE)."
+    },
+    "city": {
+      "type": ["string", "null"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email_consent": {
+      "type": "string",
+      "enum": ["subscribed", "unsubscribed"]
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "value"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      }
+    }
+  },
+  "required": ["id", "created_at"]
+}
