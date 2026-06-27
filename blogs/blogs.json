@@ -3,25 +3,23 @@
   "description": "Official Tidio blog covering live chat, AI chatbots, customer service, and business growth.",
   "url": "https://www.tidio.com/blog/",
   "rss": "https://www.tidio.com/feed/",
-  "last_fetched": null,
-  "posts": [],
   "repo": "tidio",
   "feeds": [
-    {
-      "source": "https://developers.tidio.com/",
-      "feed_url": "https://developers.tidio.com/",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
     {
       "source": "https://www.tidio.com/feed/",
       "feed_url": "https://www.tidio.com/feed/",
       "title": "",
       "saved": 0,
       "method": "feed"
+    },
+    {
+      "source": "https://developers.tidio.com/",
+      "feed_url": "https://developers.tidio.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z"
 }

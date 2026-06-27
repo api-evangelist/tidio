@@ -115,7 +115,7 @@ common:
     url: json-ld/tidio-context.jsonld
   - type: BlogRSS
     url: https://www.tidio.com/feed/
-  - type: Blogs
+  - type: Blog
     url: blogs/blogs.json
 
 maintainers:
