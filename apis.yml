@@ -89,6 +89,12 @@ apis:
         url: https://developers.tidio.com/docs/widget-introduction
 
 common:
+  - type: TrustCenter
+    url: security/tidio-trust-center.yml
+  - type: DomainSecurity
+    url: security/tidio-domain-security.yml
+  - type: Authentication
+    url: authentication/tidio-authentication.yml
   - type: Website
     url: https://www.tidio.com/
   - type: Documentation

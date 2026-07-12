@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tidio-openapi-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: clientId
+  type: apiKey
+  in: header
+  parameter: X-Tidio-Openapi-Client-Id
+  sources:
+  - openapi/tidio-openapi-openapi.yml
+- name: clientSecret
+  type: apiKey
+  in: header
+  parameter: X-Tidio-Openapi-Client-Secret
+  sources:
+  - openapi/tidio-openapi-openapi.yml
