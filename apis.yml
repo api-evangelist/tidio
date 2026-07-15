@@ -89,6 +89,8 @@ apis:
         url: https://developers.tidio.com/docs/widget-introduction
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/tidio-agentic-access.yml
   - type: TrustCenter
     url: security/tidio-trust-center.yml
   - type: DomainSecurity
