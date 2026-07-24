@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Tidio OpenAPI (REST) Contacts Project API
+  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
+
+    '
+  version: '1'
+  contact:
+    name: Tidio Developer Support
+    url: https://developers.tidio.com/support
+  termsOfService: https://www.tidio.com/terms/
+  license:
+    name: Proprietary
+    url: https://www.tidio.com/terms/
+servers:
+- url: https://api.tidio.co
+  description: Tidio REST API
+security:
+- clientId: []
+  clientSecret: []
+tags:
+- name: Project
+  description: Retrieve project information
+paths:
+  /project:
+    get:
+      operationId: getProject
+      tags:
+      - Project
+      summary: Get project info
+      description: Returns information about the authenticated project.
+      responses:
+        '200':
+          description: Project information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Id
+    clientSecret:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Secret

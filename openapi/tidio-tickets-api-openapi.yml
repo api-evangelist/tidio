@@ -1,0 +1,370 @@
+openapi: 3.0.3
+info:
+  title: Tidio OpenAPI (REST) Contacts Tickets API
+  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
+
+    '
+  version: '1'
+  contact:
+    name: Tidio Developer Support
+    url: https://developers.tidio.com/support
+  termsOfService: https://www.tidio.com/terms/
+  license:
+    name: Proprietary
+    url: https://www.tidio.com/terms/
+servers:
+- url: https://api.tidio.co
+  description: Tidio REST API
+security:
+- clientId: []
+  clientSecret: []
+tags:
+- name: Tickets
+  description: Manage email tickets and replies
+paths:
+  /tickets:
+    get:
+      operationId: getTickets
+      tags:
+      - Tickets
+      summary: Get tickets
+      description: Returns a paginated list of tickets without messages.
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        description: Value from the previous page. Use null to fetch the first page.
+        schema:
+          type: string
+          nullable: true
+      responses:
+        '200':
+          description: Paginated list of tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketList'
+        '400':
+          description: Invalid cursor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /tickets/as-contact:
+    post:
+      operationId: createTicketAsContact
+      tags:
+      - Tickets
+      summary: Create ticket (as Contact)
+      description: Creates a ticket on behalf of a contact.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreateAsContact'
+      responses:
+        '201':
+          description: Ticket created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /tickets/{ticketId}:
+    get:
+      operationId: getTicket
+      tags:
+      - Tickets
+      summary: Get ticket details
+      description: Returns full details of a single ticket including all messages.
+      parameters:
+      - $ref: '#/components/parameters/ticketId'
+      responses:
+        '200':
+          description: Ticket with messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketWithMessages'
+        '400':
+          description: Bad request
+        '404':
+          description: Ticket not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateTicket
+      tags:
+      - Tickets
+      summary: Update ticket
+      description: Updates status, priority, or assignment of a ticket.
+      parameters:
+      - $ref: '#/components/parameters/ticketId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketUpdate'
+      responses:
+        '204':
+          description: Ticket updated successfully
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteTicket
+      tags:
+      - Tickets
+      summary: Delete ticket
+      description: Permanently deletes a ticket. This action cannot be undone.
+      parameters:
+      - $ref: '#/components/parameters/ticketId'
+      responses:
+        '204':
+          description: Ticket deleted
+        '404':
+          description: Ticket not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /tickets/{ticketId}/reply:
+    post:
+      operationId: replyToTicket
+      tags:
+      - Tickets
+      summary: Reply to a ticket
+      description: Adds a reply message to an existing ticket from an operator or contact.
+      parameters:
+      - $ref: '#/components/parameters/ticketId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketReply'
+      responses:
+        '201':
+          description: Reply created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ULID identifier of the created message
+                    example: 01HAVMVKF90KH3EC0HK2T6QYP6
+        '400':
+          description: Bad request
+        '404':
+          description: Ticket not found
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: integer
+        link:
+          type: string
+          format: uri
+        subject:
+          type: string
+        contact_id:
+          type: string
+          format: uuid
+        contact_email:
+          type: string
+          nullable: true
+        priority:
+          type: string
+          enum:
+          - low
+          - normal
+          - urgent
+        status:
+          type: string
+          enum:
+          - open
+          - pending
+          - solved
+        assigned_operator_id:
+          type: string
+          format: uuid
+          nullable: true
+        assigned_department_id:
+          type: string
+          format: uuid
+        custom_channel_id:
+          type: string
+          nullable: true
+    UuidResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    TicketList:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type: string
+          nullable: true
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
+    TicketWithMessages:
+      allOf:
+      - $ref: '#/components/schemas/Ticket'
+      - type: object
+        properties:
+          messages:
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketMessage'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    TicketMessage:
+      type: object
+      properties:
+        message_id:
+          type: string
+          description: ULID format identifier.
+        created_at:
+          type: string
+          format: date-time
+        author_type:
+          type: string
+          enum:
+          - operator
+          - contact
+        author_id:
+          type: string
+          format: uuid
+        message_type:
+          type: string
+          enum:
+          - internal
+          - public
+        attachments:
+          type: array
+          items:
+            type: string
+            format: uri
+    TicketUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - open
+          - pending
+          - solved
+        priority:
+          type: string
+          enum:
+          - low
+          - normal
+          - urgent
+        assigned:
+          type: object
+          nullable: true
+          properties:
+            type:
+              type: string
+              enum:
+              - department
+              - operator
+            id:
+              type: string
+              format: uuid
+    TicketCreateAsContact:
+      type: object
+      properties:
+        subject:
+          type: string
+        contact_id:
+          type: string
+          format: uuid
+        content:
+          type: string
+    TicketReply:
+      type: object
+      required:
+      - author_type
+      - content
+      properties:
+        author_type:
+          type: string
+          enum:
+          - contact
+          - operator
+        content:
+          type: string
+        operator_id:
+          type: string
+          format: uuid
+          description: Required when author_type is operator.
+        message_type:
+          type: string
+          enum:
+          - public
+          - internal
+  parameters:
+    ticketId:
+      name: ticketId
+      in: path
+      required: true
+      description: Integer identifying the ticket.
+      schema:
+        type: integer
+        example: 10000
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Id
+    clientSecret:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Secret

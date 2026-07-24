@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Tidio OpenAPI (REST) Contacts Departments API
+  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
+
+    '
+  version: '1'
+  contact:
+    name: Tidio Developer Support
+    url: https://developers.tidio.com/support
+  termsOfService: https://www.tidio.com/terms/
+  license:
+    name: Proprietary
+    url: https://www.tidio.com/terms/
+servers:
+- url: https://api.tidio.co
+  description: Tidio REST API
+security:
+- clientId: []
+  clientSecret: []
+tags:
+- name: Departments
+  description: Retrieve department information
+paths:
+  /departments:
+    get:
+      operationId: getDepartments
+      tags:
+      - Departments
+      summary: Get departments
+      description: Returns all departments including the default General department.
+      responses:
+        '200':
+          description: List of departments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  departments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Department'
+components:
+  schemas:
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Id
+    clientSecret:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Secret

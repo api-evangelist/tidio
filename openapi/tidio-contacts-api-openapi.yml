@@ -1,0 +1,513 @@
+openapi: 3.0.3
+info:
+  title: Tidio OpenAPI (REST) Contacts API
+  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
+
+    '
+  version: '1'
+  contact:
+    name: Tidio Developer Support
+    url: https://developers.tidio.com/support
+  termsOfService: https://www.tidio.com/terms/
+  license:
+    name: Proprietary
+    url: https://www.tidio.com/terms/
+servers:
+- url: https://api.tidio.co
+  description: Tidio REST API
+security:
+- clientId: []
+  clientSecret: []
+tags:
+- name: Contacts
+  description: Manage contacts (website visitors identified by name, email, or phone)
+paths:
+  /contacts:
+    get:
+      operationId: getContacts
+      tags:
+      - Contacts
+      summary: Get contacts
+      description: 'Returns a paginated list of contacts. Contacts are website visitors who have interacted with the Tidio widget and have been identified by their name, email address, or phone number.
+
+        '
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        description: Value from the previous page. Use null to fetch the first page.
+        schema:
+          type: string
+          nullable: true
+      - name: email
+        in: query
+        required: false
+        description: Filter contacts by email address.
+        schema:
+          type: string
+          format: email
+      responses:
+        '200':
+          description: Paginated list of contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '400':
+          description: Invalid cursor or bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createContact
+      tags:
+      - Contacts
+      summary: Create contact
+      description: 'Creates a new contact. At least one of email, first_name, last_name, or phone must be provided. Always adds a new contact — no deduplication.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreate'
+      responses:
+        '201':
+          description: Contact created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /contacts/batch:
+    post:
+      operationId: createContactsBatch
+      tags:
+      - Contacts
+      summary: Create multiple contacts
+      description: 'Creates up to 100 contacts in a single request using an all-or-nothing strategy — if any contact is invalid the entire request fails.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - contacts
+              properties:
+                contacts:
+                  type: array
+                  minItems: 1
+                  maxItems: 100
+                  items:
+                    $ref: '#/components/schemas/ContactCreate'
+      responses:
+        '201':
+          description: Contacts created
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateContactsBatch
+      tags:
+      - Contacts
+      summary: Update multiple contacts
+      description: 'Updates up to 100 contacts in a single request using an all-or-nothing strategy.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - contacts
+              properties:
+                contacts:
+                  type: array
+                  minItems: 1
+                  maxItems: 100
+                  items:
+                    $ref: '#/components/schemas/ContactPatch'
+      responses:
+        '200':
+          description: Contacts updated
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /contacts/{contactId}:
+    get:
+      operationId: getContact
+      tags:
+      - Contacts
+      summary: Get single contact
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      responses:
+        '200':
+          description: Contact details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '404':
+          description: Contact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateContact
+      tags:
+      - Contacts
+      summary: Update contact properties
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactPatch'
+      responses:
+        '200':
+          description: Contact updated
+        '404':
+          description: Contact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteContact
+      tags:
+      - Contacts
+      summary: Delete contact
+      description: Permanently deletes a contact. This action cannot be undone.
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      responses:
+        '204':
+          description: Contact deleted successfully
+        '404':
+          description: Contact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /contacts/{contactId}/messages:
+    get:
+      operationId: getContactMessages
+      tags:
+      - Contacts
+      summary: Get contact messages
+      description: Returns all messages in a contact's conversation history.
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      responses:
+        '200':
+          description: Contact messages
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Message'
+        '404':
+          description: Contact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /contacts/{contactId}/viewed-pages:
+    get:
+      operationId: getContactViewedPages
+      tags:
+      - Contacts
+      summary: Get viewed pages history
+      description: 'Returns a list of pages the contact has viewed on your website, covering the past 30 days.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      responses:
+        '200':
+          description: Viewed pages
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          format: uri
+                        visited_at:
+                          type: string
+                          format: date-time
+        '404':
+          description: Contact not found
+  /contact-properties:
+    get:
+      operationId: getContactProperties
+      tags:
+      - Contacts
+      summary: Get contact properties
+      description: 'Returns the complete list of contact property definitions (default and custom) configured in the Tidio panel.
+
+        '
+      responses:
+        '200':
+          description: Contact properties list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  properties:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContactPropertyDefinition'
+components:
+  schemas:
+    ContactList:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    Message:
+      type: object
+      properties:
+        message_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        author_type:
+          type: string
+          enum:
+          - operator
+          - contact
+          - bot
+        content:
+          type: string
+    UuidResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
+    ContactPropertyDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - text
+          - email
+          - number
+          - phone
+          - url
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type: string
+          nullable: true
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
+    ContactPatch:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          nullable: true
+        first_name:
+          type: string
+          maxLength: 127
+          nullable: true
+        last_name:
+          type: string
+          maxLength: 127
+          nullable: true
+        phone:
+          type: string
+          maxLength: 155
+          nullable: true
+        email_consent:
+          type: string
+          enum:
+          - subscribed
+          - unsubscribed
+        distinct_id:
+          type: string
+          maxLength: 55
+          nullable: true
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactProperty'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ContactProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        value:
+          type: string
+          maxLength: 1000
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        distinct_id:
+          type: string
+          nullable: true
+        first_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          format: email
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+          description: ISO 639-1 language code.
+        country:
+          type: string
+          nullable: true
+          description: ISO 3166 Alpha-2 country code.
+        city:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        email_consent:
+          type: string
+          enum:
+          - subscribed
+          - unsubscribed
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactProperty'
+    ContactCreate:
+      type: object
+      description: At least one of email, first_name, last_name, or phone is required.
+      properties:
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+          maxLength: 127
+        last_name:
+          type: string
+          maxLength: 127
+        phone:
+          type: string
+          maxLength: 155
+        email_consent:
+          type: string
+          enum:
+          - subscribed
+          - unsubscribed
+        distinct_id:
+          type: string
+          maxLength: 55
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactProperty'
+  parameters:
+    contactId:
+      name: contactId
+      in: path
+      required: true
+      description: UUID identifying the contact.
+      schema:
+        type: string
+        format: uuid
+        example: a1b4ca4c-1108-4432-b256-1e4cf2bf6f9e
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Id
+    clientSecret:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Secret

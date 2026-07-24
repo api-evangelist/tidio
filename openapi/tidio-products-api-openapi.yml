@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: Tidio OpenAPI (REST) Contacts Products API
+  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
+
+    '
+  version: '1'
+  contact:
+    name: Tidio Developer Support
+    url: https://developers.tidio.com/support
+  termsOfService: https://www.tidio.com/terms/
+  license:
+    name: Proprietary
+    url: https://www.tidio.com/terms/
+servers:
+- url: https://api.tidio.co
+  description: Tidio REST API
+security:
+- clientId: []
+  clientSecret: []
+tags:
+- name: Products
+  description: Product catalog for Lyro AI recommendations
+paths:
+  /products/batch:
+    put:
+      operationId: upsertProducts
+      tags:
+      - Products
+      summary: Upsert products
+      description: 'Upload or update up to 100 products for Lyro AI recommendations using batch processing. Products are processed all-or-nothing. Processing is asynchronous.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - products
+              properties:
+                products:
+                  type: array
+                  minItems: 1
+                  maxItems: 100
+                  items:
+                    $ref: '#/components/schemas/ProductUpsert'
+      responses:
+        '204':
+          description: Products accepted for processing
+        '400':
+          description: Bad request
+        '409':
+          description: Products import already initialized from e-commerce platform
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /products/{productId}:
+    delete:
+      operationId: deleteProduct
+      tags:
+      - Products
+      summary: Delete product
+      description: 'Permanently removes a product from Lyro AI recommendations. Deletion is irreversible and processed asynchronously.
+
+        '
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Product deletion accepted
+        '404':
+          description: Product not found
+components:
+  schemas:
+    ProductUpsert:
+      type: object
+      required:
+      - id
+      - url
+      - title
+      - description
+      - default_currency
+      - status
+      - updated_at
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+          maxLength: 512
+          format: uri
+        image_url:
+          type: string
+          maxLength: 512
+          format: uri
+        title:
+          type: string
+          maxLength: 512
+        description:
+          type: string
+        vendor:
+          type: string
+          maxLength: 255
+        product_type:
+          type: string
+          maxLength: 255
+        sku:
+          type: string
+          maxLength: 255
+        barcode:
+          type: string
+          maxLength: 255
+        default_currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - visible
+          - hidden
+        price:
+          type: number
+          nullable: true
+        features:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 255
+        updated_at:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp (e.g., 2023-06-01T10:00:00+00:00).
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
+  securitySchemes:
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Id
+    clientSecret:
+      type: apiKey
+      in: header
+      name: X-Tidio-Openapi-Client-Secret
