@@ -1,7 +1,20 @@
 aid: tidio
 name: Tidio
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tidio.png
 url: https://raw.githubusercontent.com/api-evangelist/tidio/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -30,64 +43,136 @@ tags:
   - widget
 
 apis:
-  - name: Tidio OpenAPI (REST)
-    description: >
-      REST API for managing contacts, conversations, tickets, and operators.
-      Requires Plus or Premium plan for full access; Lyro AI plan grants access
-      to product-specific endpoints. Authentication uses X-Tidio-Openapi-Client-Id
-      and X-Tidio-Openapi-Client-Secret headers.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.tidio.com/docs/openapi-enable
-    baseURL: https://api.tidio.co
-    tags:
-      - REST
-      - contacts
-      - conversations
-      - tickets
-    properties:
-      - type: Documentation
-        url: https://developers.tidio.com/docs/openapi-enable
-      - type: RateLimits
-        url: https://developers.tidio.com/docs/openapi-rate-limiting
-      - type: OpenAPI
-        url: openapi/tidio-openapi-openapi.yml
-
-  - name: Tidio Webhooks
-    description: >
-      Real-time event notifications delivered via HTTP POST to a configured
-      endpoint. Webhooks are available exclusively on Plus and Premium plans and
-      are configured via the Developer panel. Supports signature verification
-      and event filtering.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.tidio.com/docs/webhooks-introduction
-    baseURL: https://api.tidio.co
-    tags:
-      - webhooks
-      - real-time
-      - events
-    properties:
-      - type: Documentation
-        url: https://developers.tidio.com/docs/webhooks-introduction
-      - type: WebhookStructure
-        url: https://developers.tidio.com/docs/webhooks-structure
-
-  - name: Tidio Widget SDK
-    description: >
-      JavaScript SDK for embedding and customizing the Tidio chat widget on
-      websites. Supports user tracking, custom bot triggers, and behavioral
-      customization. Available to all plan tiers.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.tidio.com/docs/widget-introduction
-    baseURL: https://code.tidio.co
-    tags:
-      - widget
-      - JavaScript
-      - SDK
-      - frontend
-    properties:
-      - type: Documentation
-        url: https://developers.tidio.com/docs/widget-introduction
-
+- name: Tidio Webhooks
+  description: >
+    Real-time event notifications delivered via HTTP POST to a configured endpoint. Webhooks are available
+    exclusively on Plus and Premium plans and are configured via the Developer panel. Supports signature
+    verification and event filtering.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tidio.com/docs/webhooks-introduction
+  baseURL: https://api.tidio.co
+  tags:
+  - webhooks
+  - real-time
+  - events
+  properties:
+  - type: Documentation
+    url: https://developers.tidio.com/docs/webhooks-introduction
+  - type: WebhookStructure
+    url: https://developers.tidio.com/docs/webhooks-structure
+- name: Tidio Widget SDK
+  description: >
+    JavaScript SDK for embedding and customizing the Tidio chat widget on websites. Supports user tracking,
+    custom bot triggers, and behavioral customization. Available to all plan tiers.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tidio.com/docs/widget-introduction
+  baseURL: https://code.tidio.co
+  tags:
+  - widget
+  - JavaScript
+  - SDK
+  - frontend
+  properties:
+  - type: Documentation
+    url: https://developers.tidio.com/docs/widget-introduction
+- aid: tidio:tidio-contacts-api
+  name: Tidio Contacts API
+  description: Manage contacts (website visitors identified by name, email, or phone)
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-departments-api
+  name: Tidio Departments API
+  description: Retrieve department information
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Departments
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-departments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-lyro-api
+  name: Tidio Lyro API
+  description: Lyro AI data sources and ticket answering
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Lyro
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-lyro-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-operators-api
+  name: Tidio Operators API
+  description: Retrieve operator (chat agent) information
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Operators
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-operators-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-products-api
+  name: Tidio Products API
+  description: Product catalog for Lyro AI recommendations
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-project-api
+  name: Tidio Project API
+  description: Retrieve project information
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-project-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
+- aid: tidio:tidio-tickets-api
+  name: Tidio Tickets API
+  description: Manage email tickets and replies
+  humanURL: https://developers.tidio.com/docs/openapi-enable
+  baseURL: https://api.tidio.co
+  tags:
+  - Tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/tidio-tickets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tidio.com/docs/openapi-enable
+  - type: RateLimits
+    url: https://developers.tidio.com/docs/openapi-rate-limiting
 common:
   - type: AgenticAccess
     url: agentic-access/tidio-agentic-access.yml
