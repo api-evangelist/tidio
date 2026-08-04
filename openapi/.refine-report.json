@@ -1,0 +1,26 @@
+{
+  "provider": "tidio",
+  "sources": [
+    "tidio-contacts-api-openapi.yml",
+    "tidio-departments-api-openapi.yml",
+    "tidio-lyro-api-openapi.yml",
+    "tidio-operators-api-openapi.yml",
+    "tidio-products-api-openapi.yml",
+    "tidio-project-api-openapi.yml",
+    "tidio-tickets-api-openapi.yml"
+  ],
+  "outputs": [
+    "tidio-contacts-api-openapi.yml",
+    "tidio-departments-api-openapi.yml",
+    "tidio-lyro-api-openapi.yml",
+    "tidio-operators-api-openapi.yml",
+    "tidio-products-api-openapi.yml",
+    "tidio-project-api-openapi.yml",
+    "tidio-tickets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

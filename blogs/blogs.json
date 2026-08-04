@@ -6,20 +6,17 @@
   "repo": "tidio",
   "feeds": [
     {
-      "source": "https://www.tidio.com/feed/",
-      "feed_url": "https://www.tidio.com/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
       "source": "https://developers.tidio.com/",
       "feed_url": "https://developers.tidio.com/",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://www.tidio.com/feed/",
+      "error": "HTTPError"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-07-11T11:50:51Z"
+  "fetched": "2026-08-01T15:49:00Z"
 }
