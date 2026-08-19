@@ -1,0 +1,186 @@
+{
+  "item": [
+    {
+      "id": "af17ab8c-4d8c-4af7-9d36-3b8965ba2d8d",
+      "name": "Operators",
+      "description": {
+        "content": "Retrieve operator (chat agent) information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "737babba-ffd9-402c-ac14-391ac54b9058",
+          "name": "Get operators",
+          "request": {
+            "name": "Get operators",
+            "description": {
+              "content": "Returns a paginated list of operators (chat agents).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f64ef535-043a-483f-8f72-72ac95d12127",
+              "name": "Paginated list of operators",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"operators\": [\n    {\n      \"id\": \"c595b531-0a0a-7ca8-f9fa-819c873d3ac5\",\n      \"active\": false,\n      \"email\": \"VPAzYU0@rKMusgFuMwZrrHb.ep\",\n      \"name\": \"string\",\n      \"role\": \"chat_agent\",\n      \"picture\": \"https://cSACLfLIvtCM.nmzOZfjikHFeFKlrKkbZ.Mb1yQsxjtCpqvXp5daJhQfyz\",\n      \"last_seen\": \"1995-06-24T02:46:31.971Z\"\n    },\n    {\n      \"id\": \"0066a003-5a8b-9ccd-43ee-5b3faddc38d7\",\n      \"active\": true,\n      \"email\": \"AO3va9@CXNgbFdULXv.fz\",\n      \"name\": \"string\",\n      \"role\": \"chat_agent\",\n      \"picture\": \"https://coMhLbeAYCZsEUarICSGN.ura-HOjZW5-kj-qHMBeuJ3.kRjX0YNKroABv,UfC56TQoYB9v\",\n      \"last_seen\": \"1968-01-04T01:16:48.140Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"string\",\n    \"limit\": 1238\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d50d384-f7bc-45c8-a314-aebcccbba69e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidio.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Tidio-Openapi-Client-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0a1a62ff-39ae-4280-ab16-5a564fffe07a",
+    "name": "Tidio OpenAPI (REST) Contacts Operators API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

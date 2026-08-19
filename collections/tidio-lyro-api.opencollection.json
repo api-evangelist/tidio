@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts Lyro API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lyro",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Lyro data sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/lyro/data-sources",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query",
+                "description": "Filter by kind (qa or folder)."
+              },
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by parent data source UUID."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction (asc or desc, defaults to desc)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of data sources used by the Lyro AI Agent. Supports filtering by kind (qa/folder) and parent_id.\n"
+        },
+        {
+          "info": {
+            "name": "Create Lyro QA data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/lyro/data-sources/qa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a QA (question-answer) data source for the Lyro AI Agent."
+        },
+        {
+          "info": {
+            "name": "Upsert Lyro data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tidio.co/lyro/data-sources/website",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads or updates an HTML-based data source for the Lyro AI Agent. If a source with the same URL exists, it is updated; otherwise a new one is created.\n"
+        },
+        {
+          "info": {
+            "name": "Add website as Lyro data source (scraping)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/lyro/data-sources/website/scrape",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a website URL to be scraped and used as a knowledge data source for the Lyro AI Agent. Each URL must be unique per project.\n"
+        },
+        {
+          "info": {
+            "name": "Ask Lyro to answer ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/lyro/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Asks Lyro AI to generate an answer for a ticket. Processing can take up to 40 seconds. Currently supports only the first message of a ticket.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

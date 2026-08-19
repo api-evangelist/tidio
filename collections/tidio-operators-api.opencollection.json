@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts Operators API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get operators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/operators",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of operators (chat agents)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

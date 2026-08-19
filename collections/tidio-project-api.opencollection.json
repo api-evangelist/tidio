@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts Project API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get project info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/project"
+          },
+          "docs": "Returns information about the authenticated project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

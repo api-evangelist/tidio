@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/contacts",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value from the previous page. Use null to fetch the first page."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter contacts by email address."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of contacts. Contacts are website visitors who have interacted with the Tidio widget and have been identified by their name, email address, or phone number.\n"
+        },
+        {
+          "info": {
+            "name": "Create contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact. At least one of email, first_name, last_name, or phone must be provided. Always adds a new contact — no deduplication.\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/contacts/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates up to 100 contacts in a single request using an all-or-nothing strategy — if any contact is invalid the entire request fails.\n"
+        },
+        {
+          "info": {
+            "name": "Update multiple contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tidio.co/contacts/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates up to 100 contacts in a single request using an all-or-nothing strategy.\n"
+        },
+        {
+          "info": {
+            "name": "Get single contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifying the contact."
+              }
+            ]
+          },
+          "docs": "Get single contact"
+        },
+        {
+          "info": {
+            "name": "Update contact properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tidio.co/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifying the contact."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update contact properties"
+        },
+        {
+          "info": {
+            "name": "Delete contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tidio.co/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifying the contact."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a contact. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Get contact messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/contacts/:contactId/messages",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifying the contact."
+              }
+            ]
+          },
+          "docs": "Returns all messages in a contact's conversation history."
+        },
+        {
+          "info": {
+            "name": "Get viewed pages history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/contacts/:contactId/viewed-pages",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifying the contact."
+              }
+            ]
+          },
+          "docs": "Returns a list of pages the contact has viewed on your website, covering the past 30 days.\n"
+        },
+        {
+          "info": {
+            "name": "Get contact properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/contact-properties"
+          },
+          "docs": "Returns the complete list of contact property definitions (default and custom) configured in the Tidio panel.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

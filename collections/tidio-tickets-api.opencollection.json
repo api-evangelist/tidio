@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts Tickets API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/tickets",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value from the previous page. Use null to fetch the first page."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of tickets without messages."
+        },
+        {
+          "info": {
+            "name": "Create ticket (as Contact)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/tickets/as-contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a ticket on behalf of a contact."
+        },
+        {
+          "info": {
+            "name": "Get ticket details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidio.co/tickets/:ticketId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Integer identifying the ticket."
+              }
+            ]
+          },
+          "docs": "Returns full details of a single ticket including all messages."
+        },
+        {
+          "info": {
+            "name": "Update ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tidio.co/tickets/:ticketId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Integer identifying the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates status, priority, or assignment of a ticket."
+        },
+        {
+          "info": {
+            "name": "Delete ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tidio.co/tickets/:ticketId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Integer identifying the ticket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a ticket. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Reply to a ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tidio.co/tickets/:ticketId/reply",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Integer identifying the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a reply message to an existing ticket from an operator or contact."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

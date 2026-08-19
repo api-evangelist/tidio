@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tidio OpenAPI (REST) Contacts Products API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Tidio-Openapi-Client-Id",
+      "value": "{{X-Tidio-Openapi-Client-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upsert products",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tidio.co/products/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload or update up to 100 products for Lyro AI recommendations using batch processing. Products are processed all-or-nothing. Processing is asynchronous.\n"
+        },
+        {
+          "info": {
+            "name": "Delete product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tidio.co/products/:productId",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Permanently removes a product from Lyro AI recommendations. Deletion is irreversible and processed asynchronously.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

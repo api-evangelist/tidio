@@ -1,0 +1,1647 @@
+{
+  "item": [
+    {
+      "id": "3d472a97-24ff-404c-8ce4-d649993a1a59",
+      "name": "Contacts",
+      "description": {
+        "content": "Manage contacts (website visitors identified by name, email, or phone)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "462c6a55-a7df-4f52-9fd7-96c4e1a25245",
+          "name": "Get contacts",
+          "request": {
+            "name": "Get contacts",
+            "description": {
+              "content": "Returns a paginated list of contacts. Contacts are website visitors who have interacted with the Tidio widget and have been identified by their name, email address, or phone number.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Value from the previous page. Use null to fetch the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "Filter contacts by email address."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa860554-f889-4354-954b-9937987553cf",
+              "name": "Paginated list of contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"d9879313-a4cd-fcdd-bef4-34f6e6e4f214\",\n      \"distinct_id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"VSAboL1rs@MoninDTVCrsmdRjy.lqf\",\n      \"phone\": \"string\",\n      \"language\": \"string\",\n      \"country\": \"string\",\n      \"city\": \"string\",\n      \"created_at\": \"2022-07-05T08:04:45.260Z\",\n      \"email_consent\": \"subscribed\",\n      \"properties\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"2ec4c100-f598-cba1-02ea-18abc9947760\",\n      \"distinct_id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"QYR@proKZYywVugrywVEzuptpQvPGXLhu.lc\",\n      \"phone\": \"string\",\n      \"language\": \"string\",\n      \"country\": \"string\",\n      \"city\": \"string\",\n      \"created_at\": \"2012-03-28T18:55:08.873Z\",\n      \"email_consent\": \"unsubscribed\",\n      \"properties\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"string\",\n    \"limit\": 805\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "978e9d33-6815-4e89-9e5d-6da7f51fdad5",
+              "name": "Invalid cursor or bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ad15586-5c09-4477-9d07-91c3fd9570f4",
+          "name": "Create contact",
+          "request": {
+            "name": "Create contact",
+            "description": {
+              "content": "Creates a new contact. At least one of email, first_name, last_name, or phone must be provided. Always adds a new contact — no deduplication.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53e7c2bd-16ee-42c1-b9f0-babbc4d90443",
+              "name": "Contact created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a2484ee6-c519-b425-4846-80d16e1406e4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6925ba4-60b2-4abd-9462-2002901b219c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2df96587-1249-4026-8d90-8aa9f6a8277b",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "842cb7ce-096b-4250-b031-dbd56ea9968f",
+          "name": "Create multiple contacts",
+          "request": {
+            "name": "Create multiple contacts",
+            "description": {
+              "content": "Creates up to 100 contacts in a single request using an all-or-nothing strategy — if any contact is invalid the entire request fails.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2c2aedf-37a7-41bf-b1a2-3a24ae1b81de",
+              "name": "Contacts created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63a84be4-97d8-4f19-862c-db377f98f5b5",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d80f023f-8522-48ca-b233-d7a9722cb94e",
+          "name": "Update multiple contacts",
+          "request": {
+            "name": "Update multiple contacts",
+            "description": {
+              "content": "Updates up to 100 contacts in a single request using an all-or-nothing strategy.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0087a6d-cc33-4e3c-a90b-b65ff730e1ca",
+              "name": "Contacts updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5885701-64dc-4d8c-a4c2-b62513e9c434",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email_consent\": \"<string>\",\n      \"distinct_id\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdd3c0de-7545-4de1-a5e5-76b16c9bdbda",
+          "name": "Get single contact",
+          "request": {
+            "name": "Get single contact",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "contactId",
+                  "description": "(Required) UUID identifying the contact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0a02729-460e-4c29-96e5-90cd8c927446",
+              "name": "Contact details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6f2d3481-0a0f-4dc8-6e43-3a0e44b2647c\",\n  \"distinct_id\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"aKF0aJmI-B@YuxuJQXbFnuGbMfBkObsGzYPART.va\",\n  \"phone\": \"string\",\n  \"language\": \"string\",\n  \"country\": \"string\",\n  \"city\": \"string\",\n  \"created_at\": \"1965-12-26T08:09:26.152Z\",\n  \"email_consent\": \"subscribed\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5977c736-1e1f-4bcf-ab3c-d41f19de95f8",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf0b759a-aa5c-4155-8c02-bc050e9f2745",
+          "name": "Update contact properties",
+          "request": {
+            "name": "Update contact properties",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "contactId",
+                  "description": "(Required) UUID identifying the contact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ce4dfcd-3fa9-4e51-9a58-41e628d4089e",
+              "name": "Contact updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c837f095-66e8-405e-9287-e04daa805912",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f2ec9f5-2fc2-47d0-a992-efbde29ee841",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email_consent\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8b69fc2-54d8-4078-a0c0-ca6dcd5ed580",
+          "name": "Delete contact",
+          "request": {
+            "name": "Delete contact",
+            "description": {
+              "content": "Permanently deletes a contact. This action cannot be undone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "contactId",
+                  "description": "(Required) UUID identifying the contact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e893b835-a8ad-4b73-b055-69bc7642de4a",
+              "name": "Contact deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c11046f-700a-4e14-930e-ebed1f3a9e8c",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3da5a2c4-5d19-4b11-8f62-c0ec843d9031",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e42af6f8-f67d-4b9f-8567-cd933262a46c",
+          "name": "Get contact messages",
+          "request": {
+            "name": "Get contact messages",
+            "description": {
+              "content": "Returns all messages in a contact's conversation history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                ":contactId",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "contactId",
+                  "description": "(Required) UUID identifying the contact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d5769c9-c013-4489-b306-373297b199cb",
+              "name": "Contact messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"message_id\": \"string\",\n      \"created_at\": \"2001-03-16T17:17:47.117Z\",\n      \"author_type\": \"bot\",\n      \"content\": \"string\"\n    },\n    {\n      \"message_id\": \"string\",\n      \"created_at\": \"2007-01-12T03:44:13.676Z\",\n      \"author_type\": \"bot\",\n      \"content\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cefacc17-e8b1-47e0-bdb7-ff571b604871",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8533245-ff40-4976-9ab3-791c40f18633",
+          "name": "Get viewed pages history",
+          "request": {
+            "name": "Get viewed pages history",
+            "description": {
+              "content": "Returns a list of pages the contact has viewed on your website, covering the past 30 days.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                ":contactId",
+                "viewed-pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "contactId",
+                  "description": "(Required) UUID identifying the contact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c231628-ae3b-4feb-945f-e5a6867abd1e",
+              "name": "Viewed pages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId",
+                    "viewed-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pages\": [\n    {\n      \"url\": \"http://wWXVHxKZ.qvbrSTNLa\",\n      \"visited_at\": \"1951-02-13T18:38:54.608Z\"\n    },\n    {\n      \"url\": \"https://u.gkpiwjBxd-qdhYG1UKtJMuJGoWHA5EimyBr2Dxc5UNDJFjIwmoQFAgklNc\",\n      \"visited_at\": \"1990-11-28T18:14:55.962Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44d7725c-1def-472e-9cd4-6643ea4ebc9e",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":contactId",
+                    "viewed-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "contactId",
+                      "description": "(Required) UUID identifying the contact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6677a53-d8c8-48c5-9253-694668606c15",
+          "name": "Get contact properties",
+          "request": {
+            "name": "Get contact properties",
+            "description": {
+              "content": "Returns the complete list of contact property definitions (default and custom) configured in the Tidio panel.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contact-properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42e97aac-be3e-4da6-8d77-74a47dd8618d",
+              "name": "Contact properties list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"email\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"email\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidio.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Tidio-Openapi-Client-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11d3fc39-8702-4e59-ab84-09327a61a38a",
+    "name": "Tidio OpenAPI (REST) Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
