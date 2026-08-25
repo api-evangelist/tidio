@@ -10,14 +10,16 @@
       "feed_url": "https://developers.tidio.com/",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
     },
     {
       "source": "https://www.tidio.com/feed/",
-      "error": "HTTPError"
+      "feed_url": "https://www.tidio.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-08-15T12:11:08Z"
+  "fetched": "2026-08-22T20:20:02Z"
 }
