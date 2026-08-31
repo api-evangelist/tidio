@@ -43,16 +43,16 @@ description: >
   minute on Premium. Tidio also offers an AI automation product called Flows
   for proactive visitor engagement via a no-code builder.
 tags:
-  - Live Chat
+  - live chat
   - Chatbots
-  - Customer Service
+  - customer service
   - Artificial Intelligence
-  - Help Desk
+  - help desk
   - Ticketing
   - Conversations
   - Contacts
   - Webhook
-  - Widget
+  - widget
 tags_raw:
   - live chat
   - chatbot
@@ -95,10 +95,10 @@ apis:
   humanURL: https://developers.tidio.com/docs/widget-introduction
   baseURL: https://code.tidio.co
   tags:
-  - Widget
+  - widget
   - JavaScript
   - SDK
-  - Frontend
+  - frontend
   tags_raw:
   - widget
   - JavaScript
@@ -242,8 +242,6 @@ common:
     url: json-ld/tidio-context.jsonld
   - type: BlogRSS
     url: https://www.tidio.com/feed/
-  - type: Blog
-    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane
