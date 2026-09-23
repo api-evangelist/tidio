@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tidio OpenAPI (REST) Contacts Operators API
-  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
-
-    '
+  title: Tidio OpenAPI (REST) Operators API
+  description: REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
   version: '1'
   contact:
     name: Tidio Developer Support
@@ -34,8 +32,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       responses:
         '200':
           description: Paginated list of operators
@@ -51,31 +50,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    OperatorList:
-      type: object
-      properties:
-        operators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Operator'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    PaginationMeta:
-      type: object
-      properties:
-        cursor:
-          type: string
-          nullable: true
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
     Operator:
       type: object
       properties:
@@ -88,8 +62,9 @@ components:
           type: string
           format: email
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         role:
           type: string
           enum:
@@ -99,13 +74,31 @@ components:
           - moderator
           - custom
         picture:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         last_seen:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
+    OperatorList:
+      type: object
+      properties:
+        operators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operator'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     ErrorItem:
       type: object
       properties:
@@ -113,6 +106,16 @@ components:
           type: string
         message:
           type: string
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
   securitySchemes:
     clientId:
       type: apiKey

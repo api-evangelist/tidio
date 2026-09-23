@@ -1,0 +1,30 @@
+# Front Door AI Index — tidio — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: tidio
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.tidio.com
+  final_host: www.tidio.com
+  ownership: own
+  owner: tidio
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 31
+  host_score: 31
+  density: 22.05
+  words: 1406
+  tiers:
+    agentic: 9
+    core: 22
+    model: 0
+  ambiguous: 20
+  top_terms:
+    AI: 22
+    automation: 8
+    chatbot: 7
+    agent: 6
+    smart: 6
+    AI agent: 2

@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tidio OpenAPI (REST) Contacts Tickets API
-  description: 'REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
-
-    '
+  title: Tidio OpenAPI (REST) Tickets API
+  description: REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).
   version: '1'
   contact:
     name: Tidio Developer Support
@@ -35,8 +33,9 @@ paths:
         required: false
         description: Value from the previous page. Use null to fetch the first page.
         schema:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       responses:
         '200':
           description: Paginated list of tickets
@@ -179,50 +178,28 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Ticket:
+    TicketReply:
       type: object
+      required:
+      - author_type
+      - content
       properties:
-        id:
-          type: integer
-        link:
-          type: string
-          format: uri
-        subject:
-          type: string
-        contact_id:
-          type: string
-          format: uuid
-        contact_email:
-          type: string
-          nullable: true
-        priority:
+        author_type:
           type: string
           enum:
-          - low
-          - normal
-          - urgent
-        status:
+          - contact
+          - operator
+        content:
+          type: string
+        operator_id:
+          type: string
+          format: uuid
+          description: Required when author_type is operator.
+        message_type:
           type: string
           enum:
-          - open
-          - pending
-          - solved
-        assigned_operator_id:
-          type: string
-          format: uuid
-          nullable: true
-        assigned_department_id:
-          type: string
-          format: uuid
-        custom_channel_id:
-          type: string
-          nullable: true
-    UuidResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
+          - public
+          - internal
     TicketList:
       type: object
       properties:
@@ -232,38 +209,40 @@ components:
             $ref: '#/components/schemas/Ticket'
         meta:
           $ref: '#/components/schemas/PaginationMeta'
-    ErrorResponse:
+    UuidResponse:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    PaginationMeta:
+        id:
+          type: string
+          format: uuid
+    TicketUpdate:
       type: object
       properties:
-        cursor:
+        status:
           type: string
-          nullable: true
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
-    TicketWithMessages:
-      allOf:
-      - $ref: '#/components/schemas/Ticket'
-      - type: object
-        properties:
-          messages:
-            type: array
-            items:
-              $ref: '#/components/schemas/TicketMessage'
-    ErrorItem:
-      type: object
-      properties:
-        code:
+          enum:
+          - open
+          - pending
+          - solved
+        priority:
           type: string
-        message:
-          type: string
+          enum:
+          - low
+          - normal
+          - urgent
+        assigned:
+          type:
+          - object
+          - 'null'
+          properties:
+            type:
+              type: string
+              enum:
+              - department
+              - operator
+            id:
+              type: string
+              format: uuid
     TicketMessage:
       type: object
       properties:
@@ -291,33 +270,80 @@ components:
           items:
             type: string
             format: uri
-    TicketUpdate:
+    Ticket:
       type: object
       properties:
-        status:
+        id:
+          type: integer
+        link:
           type: string
-          enum:
-          - open
-          - pending
-          - solved
+          format: uri
+        subject:
+          type: string
+        contact_id:
+          type: string
+          format: uuid
+        contact_email:
+          type:
+          - string
+          - 'null'
         priority:
           type: string
           enum:
           - low
           - normal
           - urgent
-        assigned:
-          type: object
-          nullable: true
-          properties:
-            type:
-              type: string
-              enum:
-              - department
-              - operator
-            id:
-              type: string
-              format: uuid
+        status:
+          type: string
+          enum:
+          - open
+          - pending
+          - solved
+        assigned_operator_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        assigned_department_id:
+          type: string
+          format: uuid
+        custom_channel_id:
+          type:
+          - string
+          - 'null'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    TicketWithMessages:
+      allOf:
+      - $ref: '#/components/schemas/Ticket'
+      - type: object
+        properties:
+          messages:
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketMessage'
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
     TicketCreateAsContact:
       type: object
       properties:
@@ -328,28 +354,6 @@ components:
           format: uuid
         content:
           type: string
-    TicketReply:
-      type: object
-      required:
-      - author_type
-      - content
-      properties:
-        author_type:
-          type: string
-          enum:
-          - contact
-          - operator
-        content:
-          type: string
-        operator_id:
-          type: string
-          format: uuid
-          description: Required when author_type is operator.
-        message_type:
-          type: string
-          enum:
-          - public
-          - internal
   parameters:
     ticketId:
       name: ticketId
