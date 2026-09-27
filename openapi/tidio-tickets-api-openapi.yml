@@ -200,76 +200,23 @@ components:
           enum:
           - public
           - internal
-    TicketList:
+    ErrorResponse:
       type: object
       properties:
-        tickets:
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/Ticket'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    UuidResponse:
+            $ref: '#/components/schemas/ErrorItem'
+    PaginationMeta:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-    TicketUpdate:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - open
-          - pending
-          - solved
-        priority:
-          type: string
-          enum:
-          - low
-          - normal
-          - urgent
-        assigned:
+        cursor:
           type:
-          - object
+          - string
           - 'null'
-          properties:
-            type:
-              type: string
-              enum:
-              - department
-              - operator
-            id:
-              type: string
-              format: uuid
-    TicketMessage:
-      type: object
-      properties:
-        message_id:
-          type: string
-          description: ULID format identifier.
-        created_at:
-          type: string
-          format: date-time
-        author_type:
-          type: string
-          enum:
-          - operator
-          - contact
-        author_id:
-          type: string
-          format: uuid
-        message_type:
-          type: string
-          enum:
-          - internal
-          - public
-        attachments:
-          type: array
-          items:
-            type: string
-            format: uri
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
     Ticket:
       type: object
       properties:
@@ -311,20 +258,6 @@ components:
           type:
           - string
           - 'null'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    ErrorItem:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     TicketWithMessages:
       allOf:
       - $ref: '#/components/schemas/Ticket'
@@ -334,16 +267,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/TicketMessage'
-    PaginationMeta:
-      type: object
-      properties:
-        cursor:
-          type:
-          - string
-          - 'null'
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
     TicketCreateAsContact:
       type: object
       properties:
@@ -353,6 +276,83 @@ components:
           type: string
           format: uuid
         content:
+          type: string
+    TicketList:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    UuidResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    TicketMessage:
+      type: object
+      properties:
+        message_id:
+          type: string
+          description: ULID format identifier.
+        created_at:
+          type: string
+          format: date-time
+        author_type:
+          type: string
+          enum:
+          - operator
+          - contact
+        author_id:
+          type: string
+          format: uuid
+        message_type:
+          type: string
+          enum:
+          - internal
+          - public
+        attachments:
+          type: array
+          items:
+            type: string
+            format: uri
+    TicketUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - open
+          - pending
+          - solved
+        priority:
+          type: string
+          enum:
+          - low
+          - normal
+          - urgent
+        assigned:
+          type:
+          - object
+          - 'null'
+          properties:
+            type:
+              type: string
+              enum:
+              - department
+              - operator
+            id:
+              type: string
+              format: uuid
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
           type: string
   parameters:
     ticketId:

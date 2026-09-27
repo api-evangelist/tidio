@@ -54,6 +54,7 @@ tags:
   - Contacts
   - Webhook
   - Widgets
+  - Conversational AI
 tags_raw:
   - live chat
   - chatbot
@@ -65,6 +66,7 @@ tags_raw:
   - contacts
   - webhooks
   - widget
+  - Conversational AI
 
 apis:
 - name: Tidio Webhooks
@@ -202,6 +204,8 @@ apis:
   humanURL: https://developers.tidio.com/docs/openapi-enable
   baseURL: https://api.tidio.co
   tags:
+  - Ticketing
+  tags_raw:
   - Tickets
   properties:
   - type: OpenAPI

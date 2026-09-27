@@ -79,6 +79,13 @@ paths:
           description: Product not found
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     ProductUpsert:
       type: object
       required:
@@ -144,13 +151,6 @@ components:
           type: string
         message:
           type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
   securitySchemes:
     clientId:
       type: apiKey

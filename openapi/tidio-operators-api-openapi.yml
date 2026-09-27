@@ -50,6 +50,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     Operator:
       type: object
       properties:
@@ -83,29 +90,6 @@ components:
           - string
           - 'null'
           format: date-time
-    OperatorList:
-      type: object
-      properties:
-        operators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Operator'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    ErrorItem:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     PaginationMeta:
       type: object
       properties:
@@ -116,6 +100,22 @@ components:
           description: Token for the next page; null when on the last page.
         limit:
           type: integer
+    OperatorList:
+      type: object
+      properties:
+        operators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operator'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
   securitySchemes:
     clientId:
       type: apiKey
