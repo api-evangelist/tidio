@@ -195,6 +195,64 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    LyroDataSourceList:
+      type: object
+      properties:
+        data_sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/LyroDataSource'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    LyroQaCreate:
+      type: object
+      required:
+      - title
+      - content
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
+    LyroWebsiteUpsert:
+      type: object
+      required:
+      - url
+      - title
+      - content
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        content:
+          type: string
+          description: HTML content to be processed by Lyro.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     LyroDataSource:
       type: object
       properties:
@@ -279,68 +337,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    LyroDataSourceList:
-      type: object
-      properties:
-        data_sources:
-          type: array
-          items:
-            $ref: '#/components/schemas/LyroDataSource'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    LyroQaCreate:
-      type: object
-      required:
-      - title
-      - content
-      properties:
-        title:
-          type: string
-        content:
-          type: string
-    PaginationMeta:
-      type: object
-      properties:
-        cursor:
-          type:
-          - string
-          - 'null'
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
-    LyroTicketRequest:
-      type: object
-      required:
-      - ticket_id
-      - subject
-      - contact_email
-      - contact_name
-      - recipient_email
-      - messages
-      properties:
-        ticket_id:
-          type: integer
-        subject:
-          type: string
-        contact_email:
-          type: string
-          format: email
-        contact_name:
-          type: string
-        recipient_email:
-          type: string
-          format: email
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/LyroTicketMessage'
     LyroTicketMessage:
       type: object
       required:
@@ -370,28 +366,32 @@ components:
             format: uri
         message_content:
           type: string
-    ErrorItem:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    LyroWebsiteUpsert:
+    LyroTicketRequest:
       type: object
       required:
-      - url
-      - title
-      - content
+      - ticket_id
+      - subject
+      - contact_email
+      - contact_name
+      - recipient_email
+      - messages
       properties:
-        url:
+        ticket_id:
+          type: integer
+        subject:
           type: string
-          format: uri
-        title:
+        contact_email:
           type: string
-        content:
+          format: email
+        contact_name:
           type: string
-          description: HTML content to be processed by Lyro.
+        recipient_email:
+          type: string
+          format: email
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LyroTicketMessage'
   securitySchemes:
     clientId:
       type: apiKey
