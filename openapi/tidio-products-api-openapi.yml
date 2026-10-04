@@ -79,13 +79,6 @@ paths:
           description: Product not found
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
     ProductUpsert:
       type: object
       required:
@@ -144,6 +137,13 @@ components:
           type: string
           format: date-time
           description: ISO 8601 timestamp (e.g., 2023-06-01T10:00:00+00:00).
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     ErrorItem:
       type: object
       properties:

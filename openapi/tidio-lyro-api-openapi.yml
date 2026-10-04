@@ -195,64 +195,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    LyroDataSourceList:
-      type: object
-      properties:
-        data_sources:
-          type: array
-          items:
-            $ref: '#/components/schemas/LyroDataSource'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    ErrorItem:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    LyroQaCreate:
-      type: object
-      required:
-      - title
-      - content
-      properties:
-        title:
-          type: string
-        content:
-          type: string
-    PaginationMeta:
-      type: object
-      properties:
-        cursor:
-          type:
-          - string
-          - 'null'
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
-    LyroWebsiteUpsert:
-      type: object
-      required:
-      - url
-      - title
-      - content
-      properties:
-        url:
-          type: string
-          format: uri
-        title:
-          type: string
-        content:
-          type: string
-          description: HTML content to be processed by Lyro.
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
     LyroDataSource:
       type: object
       properties:
@@ -337,6 +279,41 @@ components:
         updated_at:
           type: string
           format: date-time
+    LyroQaCreate:
+      type: object
+      required:
+      - title
+      - content
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+    LyroWebsiteUpsert:
+      type: object
+      required:
+      - url
+      - title
+      - content
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        content:
+          type: string
+          description: HTML content to be processed by Lyro.
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
     LyroTicketMessage:
       type: object
       required:
@@ -392,6 +369,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LyroTicketMessage'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
+    LyroDataSourceList:
+      type: object
+      properties:
+        data_sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/LyroDataSource'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    ErrorItem:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
   securitySchemes:
     clientId:
       type: apiKey
