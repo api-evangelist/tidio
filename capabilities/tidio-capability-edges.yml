@@ -1,0 +1,35 @@
+slug: tidio
+provider: Tidio
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Tickets
+  spec_file: tidio-tickets-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.85
+  evidence: GET /tickets; "Create ticket (as Contact)"; "Reply to a ticket"; schemas TicketWithMessages,
+    TicketReply
+  reason: Lifecycle of customer support tickets including creation by the contact, updates and replies
+    — inbound customer inquiry capture, routing and resolution in a customer service platform.
+- tag: Lyro
+  spec_file: tidio-lyro-api-openapi.yml
+  capability_id: BC-430.40
+  capability_id_l1: BC-430
+  capability_name: Self-Service Management
+  confidence: 0.78
+  evidence: '"Create Lyro QA data source", "Add website as Lyro data source (scraping)", "Ask Lyro to
+    answer ticket"'
+  reason: Manages the knowledge/data sources powering the Lyro AI chatbot and has it auto-answer support
+    tickets — squarely chatbot and knowledge-base self-service for customer support.

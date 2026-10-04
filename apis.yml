@@ -215,6 +215,9 @@ apis:
   - type: RateLimits
     url: https://developers.tidio.com/docs/openapi-rate-limiting
 common:
+  - type: CapabilityMap
+    url: capabilities/tidio-capability-edges.yml
+    name: Tidio Business Capability Map
   - type: AgenticAccess
     url: agentic-access/tidio-agentic-access.yml
   - type: TrustCenter
