@@ -298,6 +298,31 @@ paths:
                       $ref: '#/components/schemas/ContactPropertyDefinition'
 components:
   schemas:
+    UuidResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
+    ContactList:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
     Message:
       type: object
       properties:
@@ -314,44 +339,41 @@ components:
           - bot
         content:
           type: string
-    ContactPropertyDefinition:
+    ContactCreate:
       type: object
+      description: At least one of email, first_name, last_name, or phone is required.
       properties:
-        name:
+        email:
           type: string
-        type:
+          format: email
+        first_name:
+          type: string
+          maxLength: 127
+        last_name:
+          type: string
+          maxLength: 127
+        phone:
+          type: string
+          maxLength: 155
+        email_consent:
           type: string
           enum:
-          - text
-          - email
-          - number
-          - phone
-          - url
-    ContactList:
-      type: object
-      properties:
-        contacts:
+          - subscribed
+          - unsubscribed
+        distinct_id:
+          type: string
+          maxLength: 55
+        properties:
           type: array
           items:
-            $ref: '#/components/schemas/Contact'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    PaginationMeta:
+            $ref: '#/components/schemas/ContactProperty'
+    ErrorResponse:
       type: object
       properties:
-        cursor:
-          type:
-          - string
-          - 'null'
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
-    UuidResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     ContactPatch:
       type: object
       properties:
@@ -389,6 +411,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactProperty'
+    ContactProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        value:
+          type: string
+          maxLength: 1000
+    ContactPropertyDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - text
+          - email
+          - number
+          - phone
+          - url
     Contact:
       type: object
       properties:
@@ -438,50 +482,6 @@ components:
           enum:
           - subscribed
           - unsubscribed
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactProperty'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    ContactProperty:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 128
-        value:
-          type: string
-          maxLength: 1000
-    ContactCreate:
-      type: object
-      description: At least one of email, first_name, last_name, or phone is required.
-      properties:
-        email:
-          type: string
-          format: email
-        first_name:
-          type: string
-          maxLength: 127
-        last_name:
-          type: string
-          maxLength: 127
-        phone:
-          type: string
-          maxLength: 155
-        email_consent:
-          type: string
-          enum:
-          - subscribed
-          - unsubscribed
-        distinct_id:
-          type: string
-          maxLength: 55
         properties:
           type: array
           items:

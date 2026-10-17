@@ -178,13 +178,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorItem:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     TicketReply:
       type: object
       required:
@@ -207,6 +200,47 @@ components:
           enum:
           - public
           - internal
+    TicketCreateAsContact:
+      type: object
+      properties:
+        subject:
+          type: string
+        contact_id:
+          type: string
+          format: uuid
+        content:
+          type: string
+    UuidResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    TicketList:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    TicketWithMessages:
+      allOf:
+      - $ref: '#/components/schemas/Ticket'
+      - type: object
+        properties:
+          messages:
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketMessage'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorItem'
     TicketUpdate:
       type: object
       properties:
@@ -235,31 +269,6 @@ components:
             id:
               type: string
               format: uuid
-    TicketCreateAsContact:
-      type: object
-      properties:
-        subject:
-          type: string
-        contact_id:
-          type: string
-          format: uuid
-        content:
-          type: string
-    TicketWithMessages:
-      allOf:
-      - $ref: '#/components/schemas/Ticket'
-      - type: object
-        properties:
-          messages:
-            type: array
-            items:
-              $ref: '#/components/schemas/TicketMessage'
-    UuidResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
     Ticket:
       type: object
       properties:
@@ -301,6 +310,16 @@ components:
           type:
           - string
           - 'null'
+    PaginationMeta:
+      type: object
+      properties:
+        cursor:
+          type:
+          - string
+          - 'null'
+          description: Token for the next page; null when on the last page.
+        limit:
+          type: integer
     TicketMessage:
       type: object
       properties:
@@ -328,32 +347,13 @@ components:
           items:
             type: string
             format: uri
-    TicketList:
+    ErrorItem:
       type: object
       properties:
-        tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ticket'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorItem'
-    PaginationMeta:
-      type: object
-      properties:
-        cursor:
-          type:
-          - string
-          - 'null'
-          description: Token for the next page; null when on the last page.
-        limit:
-          type: integer
+        code:
+          type: string
+        message:
+          type: string
   parameters:
     ticketId:
       name: ticketId
