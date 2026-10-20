@@ -1,10 +1,20 @@
-generated: '2026-10-15'
+generated: '2026-10-20'
 method: searched
+source:
+- shopify/integrations/shopify-integration-edges.yml
+- https://zapier.com/apps/tidio/integrations
+- https://n8n.io/integrations/tidio/
+- https://composio.dev/toolkits/tidio
+- https://monid.ai/tools/tidio
 checked:
 - shopify/integrations/shopify-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
-source:
-- shopify/integrations/shopify-integration-edges.yml
+- https://composio.dev/toolkits/tidio
+- https://monid.ai/tools/tidio
+- https://n8n.io/integrations/tidio/
+- https://zapier.com/apps/tidio/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: Shopify (own)
   partner: shopify
@@ -42,3 +52,4 @@ edges:
   detected: '2026-10-19'
   detected_by: mirror-platform-listings.py
   category: AI and Bots
+templates: []
