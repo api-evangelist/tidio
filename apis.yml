@@ -215,6 +215,8 @@ apis:
   - type: RateLimits
     url: https://developers.tidio.com/docs/openapi-rate-limiting
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/tidio/overview
   - type: CapabilityMap
     url: capabilities/tidio-capability-edges.yml
     name: Tidio Business Capability Map
