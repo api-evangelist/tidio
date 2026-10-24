@@ -1,1121 +1,1106 @@
 {
+  "info": {
+    "_postman_id": "c8c5f864-e85e-4710-9e9d-1ef906f5eda3",
+    "name": "Tidio OpenAPI (REST) Tickets API",
+    "description": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\nContact Support:\n Name: Tidio Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:56:39.000Z",
+    "updatedAt": "2026-10-21T20:56:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c8c5f864-e85e-4710-9e9d-1ef906f5eda3"
+  },
   "item": [
     {
-      "id": "ab4b8d06-5117-4ecd-a5e6-2a2bf691226b",
-      "name": "Tickets",
-      "description": {
-        "content": "Manage email tickets and replies",
-        "type": "text/plain"
-      },
+      "name": "tickets",
       "item": [
         {
-          "id": "e0f913bf-ab88-40ad-bf34-16c247ec8ac4",
-          "name": "Get tickets",
-          "request": {
-            "name": "Get tickets",
-            "description": {
-              "content": "Returns a paginated list of tickets without messages.",
-              "type": "text/plain"
+          "name": "as-contact",
+          "item": [
+            {
+              "name": "Create ticket (as Contact)",
+              "id": "3c5d5d0c-c887-4cd7-b8c8-0bfc15142d9a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/as-contact",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    "as-contact"
+                  ]
+                },
+                "description": "Creates a ticket on behalf of a contact."
+              },
+              "response": [
+                {
+                  "id": "3de0f6da-3a4c-4394-b482-3cb29f6ee6a7",
+                  "name": "Ticket created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/as-contact",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        "as-contact"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\"\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-3de0f6da-3a4c-4394-b482-3cb29f6ee6a7"
+                },
+                {
+                  "id": "934bf40f-390b-480c-87ce-62169148b7e5",
+                  "name": "Validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/as-contact",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        "as-contact"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-934bf40f-390b-480c-87ce-62169148b7e5"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-3c5d5d0c-c887-4cd7-b8c8-0bfc15142d9a"
+            }
+          ],
+          "id": "730336ac-57f7-43df-9247-192c42a8498e",
+          "createdAt": "2026-10-21T20:56:39.000Z",
+          "updatedAt": "2026-10-21T20:56:39.000Z",
+          "uid": "35240-730336ac-57f7-43df-9247-192c42a8498e"
+        },
+        {
+          "name": "{ticketId}",
+          "item": [
+            {
+              "name": "reply",
+              "item": [
+                {
+                  "name": "Reply to a ticket",
+                  "id": "e5914460-fe6b-4743-9666-58e8deda2617",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"author_type\": \"contact\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"internal\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId/reply",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId",
+                        "reply"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bf4c4b71-a7d8-4d4d-b3cc-1ea58c48ac11",
+                          "key": "ticketId",
+                          "value": "<integer>",
+                          "description": "(Required) Integer identifying the ticket."
+                        }
+                      ]
+                    },
+                    "description": "Adds a reply message to an existing ticket from an operator or contact."
+                  },
+                  "response": [
+                    {
+                      "id": "9b967015-0d0e-434b-868e-2ce854522148",
+                      "name": "Reply created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"author_type\": \"contact\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"internal\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/reply",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "reply"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:56:39.000Z",
+                      "updatedAt": "2026-10-21T20:56:39.000Z",
+                      "uid": "35240-9b967015-0d0e-434b-868e-2ce854522148"
+                    },
+                    {
+                      "id": "600e8f74-c330-49b6-ac8e-1fd7637aff45",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"author_type\": \"contact\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"internal\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/reply",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "reply"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:39.000Z",
+                      "updatedAt": "2026-10-21T20:56:39.000Z",
+                      "uid": "35240-600e8f74-c330-49b6-ac8e-1fd7637aff45"
+                    },
+                    {
+                      "id": "35a46253-fdd1-4f1c-bf54-3d513062d46d",
+                      "name": "Ticket not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"author_type\": \"contact\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"internal\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/reply",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "reply"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:39.000Z",
+                      "updatedAt": "2026-10-21T20:56:39.000Z",
+                      "uid": "35240-35a46253-fdd1-4f1c-bf54-3d513062d46d"
+                    },
+                    {
+                      "id": "a811adad-883f-4a34-8afa-042a668c8d34",
+                      "name": "Validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"author_type\": \"contact\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"internal\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/reply",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "reply"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:56:39.000Z",
+                      "updatedAt": "2026-10-21T20:56:39.000Z",
+                      "uid": "35240-a811adad-883f-4a34-8afa-042a668c8d34"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-e5914460-fe6b-4743-9666-58e8deda2617"
+                }
+              ],
+              "id": "58a061c1-bb2a-4805-a295-3be3771fe3ff",
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-58a061c1-bb2a-4805-a295-3be3771fe3ff"
             },
+            {
+              "name": "Get ticket details",
+              "id": "c58afc7a-8ca9-4f92-ab79-f62c74523b4a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/:ticketId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4a089914-d647-4c54-8e9b-6629acdec7f6",
+                      "key": "ticketId",
+                      "value": "<integer>",
+                      "description": "(Required) Integer identifying the ticket."
+                    }
+                  ]
+                },
+                "description": "Returns full details of a single ticket including all messages."
+              },
+              "response": [
+                {
+                  "id": "60174302-9416-4625-9507-cfb765ed2a73",
+                  "name": "Ticket with messages",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"link\": \"<uri>\",\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"contact_email\": \"<string,null>\",\n  \"priority\": \"normal\",\n  \"status\": \"pending\",\n  \"assigned_operator_id\": \"<string,null-uuid>\",\n  \"assigned_department_id\": \"<uuid>\",\n  \"custom_channel_id\": \"<string,null>\",\n  \"messages\": [\n    {\n      \"message_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"author_type\": \"operator\",\n      \"author_id\": \"<uuid>\",\n      \"message_type\": \"public\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"message_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"author_type\": \"operator\",\n      \"author_id\": \"<uuid>\",\n      \"message_type\": \"public\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-60174302-9416-4625-9507-cfb765ed2a73"
+                },
+                {
+                  "id": "97e40f1e-c3cd-45e9-864e-923bf4591977",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-97e40f1e-c3cd-45e9-864e-923bf4591977"
+                },
+                {
+                  "id": "cf34721c-6f2c-4531-b7cf-a2efbb101fd6",
+                  "name": "Ticket not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-cf34721c-6f2c-4531-b7cf-a2efbb101fd6"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-c58afc7a-8ca9-4f92-ab79-f62c74523b4a"
+            },
+            {
+              "name": "Update ticket",
+              "id": "2b0bc7e6-a81b-413c-8238-9a537ff62eab",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"pending\",\n  \"priority\": \"normal\",\n  \"assigned\": {\n    \"type\": \"department\",\n    \"id\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/:ticketId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4eef5ebe-5fe0-4921-9297-a7341a7ac3a8",
+                      "key": "ticketId",
+                      "value": "<integer>",
+                      "description": "(Required) Integer identifying the ticket."
+                    }
+                  ]
+                },
+                "description": "Updates status, priority, or assignment of a ticket."
+              },
+              "response": [
+                {
+                  "id": "b0420cb7-9649-4d15-b330-58560fcde05a",
+                  "name": "Ticket updated successfully",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"pending\",\n  \"priority\": \"normal\",\n  \"assigned\": {\n    \"type\": \"department\",\n    \"id\": \"<uuid>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-b0420cb7-9649-4d15-b330-58560fcde05a"
+                },
+                {
+                  "id": "0f5d45ec-72c6-4713-bd21-f9f096009529",
+                  "name": "Validation error",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"pending\",\n  \"priority\": \"normal\",\n  \"assigned\": {\n    \"type\": \"department\",\n    \"id\": \"<uuid>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-0f5d45ec-72c6-4713-bd21-f9f096009529"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-2b0bc7e6-a81b-413c-8238-9a537ff62eab"
+            },
+            {
+              "name": "Delete ticket",
+              "id": "49544614-9604-4b86-9502-dd99323c224b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/:ticketId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0f925d3f-2f52-4fec-869d-cbd4551dac31",
+                      "key": "ticketId",
+                      "value": "<integer>",
+                      "description": "(Required) Integer identifying the ticket."
+                    }
+                  ]
+                },
+                "description": "Permanently deletes a ticket. This action cannot be undone."
+              },
+              "response": [
+                {
+                  "id": "8e7d316a-748d-4278-93a8-eb70a4993acb",
+                  "name": "Ticket deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-8e7d316a-748d-4278-93a8-eb70a4993acb"
+                },
+                {
+                  "id": "b10ee2ac-bb2d-4020-a0fc-228de7c8ed05",
+                  "name": "Ticket not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:39.000Z",
+                  "updatedAt": "2026-10-21T20:56:39.000Z",
+                  "uid": "35240-b10ee2ac-bb2d-4020-a0fc-228de7c8ed05"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-49544614-9604-4b86-9502-dd99323c224b"
+            }
+          ],
+          "id": "2e9a117f-c839-4e9d-946f-126b61e3f1df",
+          "createdAt": "2026-10-21T20:56:39.000Z",
+          "updatedAt": "2026-10-21T20:56:39.000Z",
+          "uid": "35240-2e9a117f-c839-4e9d-946f-126b61e3f1df"
+        },
+        {
+          "name": "Get tickets",
+          "id": "5060d02b-106d-40cd-b36a-0eb838e09ecb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/tickets?cursor=<string,null>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "tickets"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Value from the previous page. Use null to fetch the first page.",
                   "key": "cursor",
-                  "value": "<string>",
-                  "description": "Value from the previous page. Use null to fetch the first page."
+                  "value": "<string,null>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Returns a paginated list of tickets without messages."
           },
           "response": [
             {
-              "id": "1d79c711-3ce3-446f-b61a-5e66678638d7",
+              "id": "367e709a-ccb6-4ddc-9064-1074be6c870d",
               "name": "Paginated list of tickets",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?cursor=<string,null>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Value from the previous page. Use null to fetch the first page.",
+                      "key": "cursor",
+                      "value": "<string,null>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"tickets\": [\n    {\n      \"id\": 7596,\n      \"link\": \"http://WbyMyMZCpsnXrNdFi.avxXG.bLACxCEnoCMyqnp2n\",\n      \"subject\": \"string\",\n      \"contact_id\": \"35fbcce4-f580-4f22-846e-c6dfeb0fe7c8\",\n      \"contact_email\": \"string\",\n      \"priority\": \"normal\",\n      \"status\": \"solved\",\n      \"assigned_operator_id\": \"3c244106-9505-da8b-c020-264779fd9bca\",\n      \"assigned_department_id\": \"be703a15-fc04-abb1-5ee0-5958b3185b81\",\n      \"custom_channel_id\": \"string\"\n    },\n    {\n      \"id\": 7138,\n      \"link\": \"https://dFznBZnQHGgPAhZcYz.zwhmyLX.WnH\",\n      \"subject\": \"string\",\n      \"contact_id\": \"62ce7803-e960-70c1-f9e9-bb8b9d208eca\",\n      \"contact_email\": \"string\",\n      \"priority\": \"urgent\",\n      \"status\": \"solved\",\n      \"assigned_operator_id\": \"9712938f-809d-9054-c1e4-2acc29922e7e\",\n      \"assigned_department_id\": \"b9b2045d-e758-9914-d988-31743e824eaa\",\n      \"custom_channel_id\": \"string\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"string\",\n    \"limit\": 3457\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"tickets\": [\n    {\n      \"id\": \"<integer>\",\n      \"link\": \"<uri>\",\n      \"subject\": \"<string>\",\n      \"contact_id\": \"<uuid>\",\n      \"contact_email\": \"<string,null>\",\n      \"priority\": \"normal\",\n      \"status\": \"pending\",\n      \"assigned_operator_id\": \"<string,null-uuid>\",\n      \"assigned_department_id\": \"<uuid>\",\n      \"custom_channel_id\": \"<string,null>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"link\": \"<uri>\",\n      \"subject\": \"<string>\",\n      \"contact_id\": \"<uuid>\",\n      \"contact_email\": \"<string,null>\",\n      \"priority\": \"low\",\n      \"status\": \"solved\",\n      \"assigned_operator_id\": \"<string,null-uuid>\",\n      \"assigned_department_id\": \"<uuid>\",\n      \"custom_channel_id\": \"<string,null>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"<string,null>\",\n    \"limit\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-367e709a-ccb6-4ddc-9064-1074be6c870d"
             },
             {
-              "id": "1d3bcb3b-efa5-4e30-ac05-13e2bac4b88a",
+              "id": "4aa6137a-6d67-4c3f-ba80-11572d47e994",
               "name": "Invalid cursor",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/tickets?cursor=<string,null>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "tickets"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Value from the previous page. Use null to fetch the first page.",
                       "key": "cursor",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1efea532-5071-4cac-b1d8-6a30dd1f8873",
-          "name": "Create ticket (as Contact)",
-          "request": {
-            "name": "Create ticket (as Contact)",
-            "description": {
-              "content": "Creates a ticket on behalf of a contact.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tickets",
-                "as-contact"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "91a3dd2a-9394-4ce6-9b54-20b3aa0bd26b",
-              "name": "Ticket created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    "as-contact"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"e8cd86d9-677b-e9d4-07ee-ee66537cda33\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b8bca4f2-8b88-4774-bc88-2a0f0efeafa9",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    "as-contact"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"subject\": \"<string>\",\n  \"contact_id\": \"<uuid>\",\n  \"content\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f93ecddd-782c-42ef-8298-90661e981f36",
-          "name": "Get ticket details",
-          "request": {
-            "name": "Get ticket details",
-            "description": {
-              "content": "Returns full details of a single ticket including all messages.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tickets",
-                ":ticketId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "ticketId",
-                  "description": "(Required) Integer identifying the ticket."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "cbea1483-f4b0-4f16-a6cc-6a8f715b8fd4",
-              "name": "Ticket with messages",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
+                      "value": "<string,null>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 2441,\n  \"link\": \"https://vnHoaqtLF.fyygTngxQcyfq+-30RPed\",\n  \"subject\": \"string\",\n  \"contact_id\": \"a63a13df-9e22-cc07-4337-4673ff560288\",\n  \"contact_email\": \"string\",\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"assigned_operator_id\": \"181a74bc-908e-1f2f-dbab-ccc0cbe7ca8a\",\n  \"assigned_department_id\": \"1ef6d06c-516b-5d16-eb3b-c513ec71332e\",\n  \"custom_channel_id\": \"string\",\n  \"messages\": [\n    {\n      \"message_id\": \"string\",\n      \"created_at\": \"1970-01-05T12:10:48.851Z\",\n      \"author_type\": \"contact\",\n      \"author_id\": \"450ba777-f5cc-c665-f3f7-f1397e785156\",\n      \"message_type\": \"public\",\n      \"attachments\": [\n        \"https://pVgjNaLCBZDnhgXbuyhZEuFmEOv.vmzjW244BF4HMvMsU1uue4RnKNbd\",\n        \"https://vWlObkjweuFLwdhfCATK.xfhwDEeRLtp93HMVVEL\"\n      ]\n    },\n    {\n      \"message_id\": \"string\",\n      \"created_at\": \"1991-08-20T03:01:48.670Z\",\n      \"author_type\": \"operator\",\n      \"author_id\": \"f05e7dcb-5983-1230-0ef9-0e756054f2c2\",\n      \"message_type\": \"public\",\n      \"attachments\": [\n        \"https://DfsoTHRPseOBkLxhWr.rkydJJxPZjRoG6y7fpfErson\",\n        \"http://fvoYGtyuij.iwbiAvQ9x283dQHNaleHB,FzogC2a,zwgcR0GPq,aLMQJURpxivSbyypGs-kN6h3r\"\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f39c1f2b-caac-4b08-aa4a-301e0e5fb9f7",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4f9d893d-5c4d-457a-b3b1-02f3054241b1",
-              "name": "Ticket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4ae91a45-d0f7-4246-95aa-35c865019375",
-          "name": "Update ticket",
-          "request": {
-            "name": "Update ticket",
-            "description": {
-              "content": "Updates status, priority, or assignment of a ticket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tickets",
-                ":ticketId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "ticketId",
-                  "description": "(Required) Integer identifying the ticket."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"assigned\": {\n    \"type\": \"<string>\",\n    \"id\": \"<uuid>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ea4048be-c9e3-43e8-acd0-cce8972f8316",
-              "name": "Ticket updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"assigned\": {\n    \"type\": \"<string>\",\n    \"id\": \"<uuid>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9bc5dc34-cd61-4a2d-b565-ecbef6899010",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"assigned\": {\n    \"type\": \"<string>\",\n    \"id\": \"<uuid>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c9154518-07c8-479a-82da-d252f8e2ae50",
-          "name": "Delete ticket",
-          "request": {
-            "name": "Delete ticket",
-            "description": {
-              "content": "Permanently deletes a ticket. This action cannot be undone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tickets",
-                ":ticketId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "ticketId",
-                  "description": "(Required) Integer identifying the ticket."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f489851a-0713-4a45-8403-d421903244cd",
-              "name": "Ticket deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "cc11bd60-d8ce-431d-b235-9fb057efe2c0",
-              "name": "Ticket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2030f46f-c21b-4522-804f-85ab250ca086",
-          "name": "Reply to a ticket",
-          "request": {
-            "name": "Reply to a ticket",
-            "description": {
-              "content": "Adds a reply message to an existing ticket from an operator or contact.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tickets",
-                ":ticketId",
-                "reply"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "ticketId",
-                  "description": "(Required) Integer identifying the ticket."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"author_type\": \"<string>\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "2a8efda3-fd2f-4c17-bd45-64246bb2138d",
-              "name": "Reply created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId",
-                    "reply"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"author_type\": \"<string>\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"01HAVMVKF90KH3EC0HK2T6QYP6\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "887e48e2-e9cb-46a8-ad39-6ad6987f1a0a",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId",
-                    "reply"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"author_type\": \"<string>\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "85f0367e-a09f-4d3d-ae48-5a5ea1768d42",
-              "name": "Ticket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId",
-                    "reply"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"author_type\": \"<string>\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bdaac45f-c2cf-4b5e-acb2-74f3e360325c",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tickets",
-                    ":ticketId",
-                    "reply"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "ticketId",
-                      "description": "(Required) Integer identifying the ticket."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"author_type\": \"<string>\",\n  \"content\": \"<string>\",\n  \"operator_id\": \"<uuid>\",\n  \"message_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:56:39.000Z",
+              "updatedAt": "2026-10-21T20:56:39.000Z",
+              "uid": "35240-4aa6137a-6d67-4c3f-ba80-11572d47e994"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:56:39.000Z",
+          "updatedAt": "2026-10-21T20:56:39.000Z",
+          "uid": "35240-5060d02b-106d-40cd-b36a-0eb838e09ecb"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tidio.co",
-      "key": "baseUrl"
+      "id": "e7ea5759-171b-4abc-aec2-48c7f6b8925d",
+      "createdAt": "2026-10-21T20:56:39.000Z",
+      "updatedAt": "2026-10-21T20:56:39.000Z",
+      "uid": "35240-e7ea5759-171b-4abc-aec2-48c7f6b8925d"
     }
   ],
   "auth": {
@@ -1123,25 +1108,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Tidio-Openapi-Client-Id"
+        "value": "X-Tidio-Openapi-Client-Id",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "9ec561ab-5e5d-43ec-b4bb-c4f363871854",
-    "name": "Tidio OpenAPI (REST) Contacts Tickets API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tidio.co"
     }
-  }
+  ]
 }

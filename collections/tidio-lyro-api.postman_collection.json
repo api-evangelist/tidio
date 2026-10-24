@@ -1,937 +1,995 @@
 {
+  "info": {
+    "_postman_id": "3edb9db6-2d86-4dc2-8901-0e76f2ce7b78",
+    "name": "Tidio OpenAPI (REST) Lyro API",
+    "description": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\nContact Support:\n Name: Tidio Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:56:04.000Z",
+    "updatedAt": "2026-10-21T20:56:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3edb9db6-2d86-4dc2-8901-0e76f2ce7b78"
+  },
   "item": [
     {
-      "id": "fcc430d8-39ae-426e-bb79-23d05fbef7d3",
-      "name": "Lyro",
-      "description": {
-        "content": "Lyro AI data sources and ticket answering",
-        "type": "text/plain"
-      },
+      "name": "lyro",
       "item": [
         {
-          "id": "2685fb9d-18f6-41e1-8e92-eb18a2997e7f",
-          "name": "Get Lyro data sources",
-          "request": {
-            "name": "Get Lyro data sources",
-            "description": {
-              "content": "Returns a paginated list of data sources used by the Lyro AI Agent. Supports filtering by kind (qa/folder) and parent_id.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lyro",
-                "data-sources"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "data-sources",
+          "item": [
+            {
+              "name": "qa",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "kind",
-                  "value": "<string>",
-                  "description": "Filter by kind (qa or folder)."
-                },
-                {
-                  "disabled": false,
-                  "key": "kind",
-                  "value": "<string>",
-                  "description": "Filter by kind (qa or folder)."
-                },
-                {
-                  "disabled": false,
-                  "key": "parent_id",
-                  "value": "<uuid>",
-                  "description": "Filter by parent data source UUID."
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "desc",
-                  "description": "Sort direction (asc or desc, defaults to desc)."
+                  "name": "Create Lyro QA data source",
+                  "id": "5de059a2-a410-4aaf-9c20-d11ef1b173ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/data-sources/qa",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "data-sources",
+                        "qa"
+                      ]
+                    },
+                    "description": "Creates a QA (question-answer) data source for the Lyro AI Agent."
+                  },
+                  "response": [
+                    {
+                      "id": "04d93e4e-bde7-4ce3-9a30-b82cd21edcc8",
+                      "name": "QA data source created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/lyro/data-sources/qa",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "lyro",
+                            "data-sources",
+                            "qa"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-04d93e4e-bde7-4ce3-9a30-b82cd21edcc8"
+                    },
+                    {
+                      "id": "6e9d7c03-c73b-4090-beec-b383d14f8d6e",
+                      "name": "Validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/lyro/data-sources/qa",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "lyro",
+                            "data-sources",
+                            "qa"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-6e9d7c03-c73b-4090-beec-b383d14f8d6e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-5de059a2-a410-4aaf-9c20-d11ef1b173ed"
                 }
               ],
-              "variable": []
+              "id": "46381bc2-8c21-472a-b7c9-571d264fab55",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-46381bc2-8c21-472a-b7c9-571d264fab55"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "20c4d6d9-b418-4b0d-b8d2-923576546cd0",
-              "name": "Paginated list of Lyro data sources",
-              "originalRequest": {
+              "name": "website",
+              "item": [
+                {
+                  "name": "scrape",
+                  "item": [
+                    {
+                      "name": "Add website as Lyro data source (scraping)",
+                      "id": "6d7bc1dd-912b-4fa2-b906-c2ea769d9230",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/lyro/data-sources/website/scrape",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "lyro",
+                            "data-sources",
+                            "website",
+                            "scrape"
+                          ]
+                        },
+                        "description": "Submits a website URL to be scraped and used as a knowledge data source for the Lyro AI Agent. Each URL must be unique per project."
+                      },
+                      "response": [
+                        {
+                          "id": "2d4e7151-f2fd-4aea-87dd-f75709c2f8f0",
+                          "name": "Website scraping initiated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Tidio-Openapi-Client-Id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/lyro/data-sources/website/scrape",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "lyro",
+                                "data-sources",
+                                "website",
+                                "scrape"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-2d4e7151-f2fd-4aea-87dd-f75709c2f8f0"
+                        },
+                        {
+                          "id": "870d3c3b-ad5c-4280-95d2-f0f282382bd4",
+                          "name": "URL already exists as a data source",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Tidio-Openapi-Client-Id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/lyro/data-sources/website/scrape",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "lyro",
+                                "data-sources",
+                                "website",
+                                "scrape"
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-870d3c3b-ad5c-4280-95d2-f0f282382bd4"
+                        },
+                        {
+                          "id": "1a40e7ca-f459-4c75-a63e-96477670a013",
+                          "name": "Validation error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Tidio-Openapi-Client-Id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/lyro/data-sources/website/scrape",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "lyro",
+                                "data-sources",
+                                "website",
+                                "scrape"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-1a40e7ca-f459-4c75-a63e-96477670a013"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-6d7bc1dd-912b-4fa2-b906-c2ea769d9230"
+                    }
+                  ],
+                  "id": "6fd1fbc5-474e-4905-a345-af3a95ff21a9",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-6fd1fbc5-474e-4905-a345-af3a95ff21a9"
+                },
+                {
+                  "name": "Upsert Lyro data source",
+                  "id": "ab91e983-873a-41f7-aa89-d577b0bf5a20",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/data-sources/website",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "data-sources",
+                        "website"
+                      ]
+                    },
+                    "description": "Uploads or updates an HTML-based data source for the Lyro AI Agent. If a source with the same URL exists, it is updated; otherwise a new one is created."
+                  },
+                  "response": [
+                    {
+                      "id": "dd412516-769f-49f1-9d10-9cb2e12fc9a4",
+                      "name": "Data source upserted",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/lyro/data-sources/website",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "lyro",
+                            "data-sources",
+                            "website"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-dd412516-769f-49f1-9d10-9cb2e12fc9a4"
+                    },
+                    {
+                      "id": "560a3c2d-9bdd-4700-a3e0-074200676458",
+                      "name": "Validation error",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Tidio-Openapi-Client-Id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/lyro/data-sources/website",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "lyro",
+                            "data-sources",
+                            "website"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-560a3c2d-9bdd-4700-a3e0-074200676458"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-ab91e983-873a-41f7-aa89-d577b0bf5a20"
+                }
+              ],
+              "id": "b9e13b32-e7a7-40cd-99a6-2978df637366",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-b9e13b32-e7a7-40cd-99a6-2978df637366"
+            },
+            {
+              "name": "Get Lyro data sources",
+              "id": "5bf9d63a-f6f2-411e-8e84-50d4dfc47fa7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/lyro/data-sources?cursor=<string,null>&kind=folder&kind=folder&parent_id=<uuid>&order=desc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "lyro",
                     "data-sources"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
                       "key": "cursor",
-                      "value": "<string>"
+                      "value": "<string,null>"
                     },
                     {
+                      "description": "Filter by kind (qa or folder).",
                       "key": "kind",
-                      "value": "<string>"
+                      "value": "folder"
                     },
                     {
+                      "description": "Filter by kind (qa or folder).",
                       "key": "kind",
-                      "value": "<string>"
+                      "value": "folder"
                     },
                     {
+                      "description": "Filter by parent data source UUID.",
                       "key": "parent_id",
                       "value": "<uuid>"
                     },
                     {
+                      "description": "Sort direction (asc or desc, defaults to desc).",
                       "key": "order",
                       "value": "desc"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns a paginated list of data sources used by the Lyro AI Agent. Supports filtering by kind (qa/folder) and parent_id."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data_sources\": [\n    {\n      \"id\": \"6bd36beb-c294-df06-7bf3-4edf33db0852\",\n      \"parent_id\": \"fc990559-c757-4144-b44a-a08e55c5db13\",\n      \"title\": \"string\",\n      \"type\": \"website\",\n      \"kind\": \"folder\",\n      \"origin\": \"inbox\",\n      \"status\": \"used\",\n      \"used_by_lyro\": false,\n      \"used_by_copilot\": false,\n      \"sync_status\": \"success\",\n      \"content\": \"string\",\n      \"source_url\": \"http://ydtOSVGYDMliZnjJJfXWDLupMnEYfENYh.cvwpS7M7EyqkhWlD\",\n      \"skip_auto_sync\": false,\n      \"manual_sync_available_at\": \"1973-09-18T03:47:46.182Z\",\n      \"next_auto_sync_at\": \"1968-06-24T18:20:14.427Z\",\n      \"created_at\": \"1961-01-12T05:46:37.809Z\",\n      \"updated_at\": \"2014-03-18T17:57:49.121Z\"\n    },\n    {\n      \"id\": \"611e9638-a3f0-8aeb-bb1d-2ead9c1f4fb5\",\n      \"parent_id\": \"07e89734-4b2a-be6e-05a7-d948198fc0de\",\n      \"title\": \"string\",\n      \"type\": \"external_html\",\n      \"kind\": \"qa\",\n      \"origin\": \"inbox\",\n      \"status\": \"used\",\n      \"used_by_lyro\": true,\n      \"used_by_copilot\": true,\n      \"sync_status\": \"success\",\n      \"content\": \"string\",\n      \"source_url\": \"https://xYQEQZPPE.orlJBiZOx53HjxoYfZqgSpCCjYts41D\",\n      \"skip_auto_sync\": false,\n      \"manual_sync_available_at\": \"1988-08-17T11:42:52.413Z\",\n      \"next_auto_sync_at\": \"2004-01-11T08:35:39.989Z\",\n      \"created_at\": \"1997-03-13T04:07:21.216Z\",\n      \"updated_at\": \"1995-07-16T16:17:02.273Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"string\",\n    \"limit\": 573\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6965bd80-445f-4036-8974-8104d230359a",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "a1acfee9-2311-4afe-9a2a-a7cc4ae5347f",
+                  "name": "Paginated list of Lyro data sources",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/data-sources?cursor=<string,null>&kind=folder&parent_id=<uuid>&order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "data-sources"
+                      ],
+                      "query": [
+                        {
+                          "key": "cursor",
+                          "value": "<string,null>"
+                        },
+                        {
+                          "description": "Filter by kind (qa or folder).",
+                          "key": "kind",
+                          "value": "folder"
+                        },
+                        {
+                          "description": "Filter by parent data source UUID.",
+                          "key": "parent_id",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Sort direction (asc or desc, defaults to desc).",
+                          "key": "order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "cursor",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "kind",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "kind",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "parent_id",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "order",
-                      "value": "desc"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data_sources\": [\n    {\n      \"id\": \"<uuid>\",\n      \"parent_id\": \"<string,null-uuid>\",\n      \"title\": \"<string>\",\n      \"type\": \"zendesk_hc\",\n      \"kind\": \"qa\",\n      \"origin\": \"website\",\n      \"status\": \"used\",\n      \"used_by_lyro\": \"<boolean>\",\n      \"used_by_copilot\": \"<boolean>\",\n      \"sync_status\": \"in progress\",\n      \"content\": \"<string,null>\",\n      \"source_url\": \"<string,null-uri>\",\n      \"skip_auto_sync\": \"<boolean,null>\",\n      \"manual_sync_available_at\": \"<string,null-date-time>\",\n      \"next_auto_sync_at\": \"<string,null-date-time>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"parent_id\": \"<string,null-uuid>\",\n      \"title\": \"<string>\",\n      \"type\": \"zendesk_hc\",\n      \"kind\": \"qa\",\n      \"origin\": \"industry\",\n      \"status\": \"used\",\n      \"used_by_lyro\": \"<boolean>\",\n      \"used_by_copilot\": \"<boolean>\",\n      \"sync_status\": \"in progress\",\n      \"content\": \"<string,null>\",\n      \"source_url\": \"<string,null-uri>\",\n      \"skip_auto_sync\": \"<boolean,null>\",\n      \"manual_sync_available_at\": \"<string,null-date-time>\",\n      \"next_auto_sync_at\": \"<string,null-date-time>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": \"<string,null>\",\n    \"limit\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-a1acfee9-2311-4afe-9a2a-a7cc4ae5347f"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "e5a1382c-eaa2-4b84-877e-df3bf3a00ec0",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/data-sources?cursor=<string,null>&kind=folder&parent_id=<uuid>&order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "data-sources"
+                      ],
+                      "query": [
+                        {
+                          "key": "cursor",
+                          "value": "<string,null>"
+                        },
+                        {
+                          "description": "Filter by kind (qa or folder).",
+                          "key": "kind",
+                          "value": "folder"
+                        },
+                        {
+                          "description": "Filter by parent data source UUID.",
+                          "key": "parent_id",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Sort direction (asc or desc, defaults to desc).",
+                          "key": "order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-e5a1382c-eaa2-4b84-877e-df3bf3a00ec0"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-5bf9d63a-f6f2-411e-8e84-50d4dfc47fa7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f41c38a7-50d0-4c28-830a-4349f07c495e",
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-f41c38a7-50d0-4c28-830a-4349f07c495e"
         },
         {
-          "id": "6ad076b3-9b35-462b-ab8a-be8b6f7222a4",
-          "name": "Create Lyro QA data source",
-          "request": {
-            "name": "Create Lyro QA data source",
-            "description": {
-              "content": "Creates a QA (question-answer) data source for the Lyro AI Agent.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lyro",
-                "data-sources",
-                "qa"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "tickets",
+          "item": [
             {
-              "id": "aea8b909-0e48-4450-9692-62eb8c9b4840",
-              "name": "QA data source created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "qa"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
+              "name": "Ask Lyro to answer ticket",
+              "id": "cc1be255-558a-471c-b936-40fe51065cf3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "95a93b42-2fcd-4e0b-97bb-780a56ca5d0b",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "qa"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
+                  "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2050d4f0-ba9a-41d2-997d-e6f6668b5a78",
-          "name": "Upsert Lyro data source",
-          "request": {
-            "name": "Upsert Lyro data source",
-            "description": {
-              "content": "Uploads or updates an HTML-based data source for the Lyro AI Agent. If a source with the same URL exists, it is updated; otherwise a new one is created.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lyro",
-                "data-sources",
-                "website"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ff007ea1-b3e1-4deb-9067-acadf78906b9",
-              "name": "Data source upserted",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "website"
-                  ],
+                  "raw": "{{baseUrl}}/lyro/tickets",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "88927f6d-54fd-41fc-9701-62528582f410",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "website"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e2fcc01d-f440-4f4e-9aab-17f7dad8304f",
-          "name": "Add website as Lyro data source (scraping)",
-          "request": {
-            "name": "Add website as Lyro data source (scraping)",
-            "description": {
-              "content": "Submits a website URL to be scraped and used as a knowledge data source for the Lyro AI Agent. Each URL must be unique per project.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lyro",
-                "data-sources",
-                "website",
-                "scrape"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"url\": \"<uri>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "18a174b0-df62-4f7b-ac23-aab1931a0291",
-              "name": "Website scraping initiated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "website",
-                    "scrape"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"<uri>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5cfaffb1-7d16-4654-8bc5-8720c573d8f3",
-              "name": "URL already exists as a data source",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "website",
-                    "scrape"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"<uri>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "169886db-dec6-41df-9960-0a666f6e7d0c",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "data-sources",
-                    "website",
-                    "scrape"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"<uri>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c95f935b-2b9d-44bd-80e6-a52cb1d5da84",
-          "name": "Ask Lyro to answer ticket",
-          "request": {
-            "name": "Ask Lyro to answer ticket",
-            "description": {
-              "content": "Asks Lyro AI to generate an answer for a ticket. Processing can take up to 40 seconds. Currently supports only the first message of a ticket.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lyro",
-                "tickets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f37f0c0e-7118-4bc0-a4e9-85f048b1f4f7",
-              "name": "Lyro answer generated (may be null if Lyro cannot answer)",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "lyro",
                     "tickets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Asks Lyro AI to generate an answer for a ticket. Processing can take up to 40 seconds. Currently supports only the first message of a ticket."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "664cfd56-c620-4f8c-bee5-fa7fb38ff8ed",
+                  "name": "Lyro answer generated (may be null if Lyro cannot answer)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/tickets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "tickets"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message_content\": \"<string,null>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-664cfd56-c620-4f8c-bee5-fa7fb38ff8ed"
+                },
+                {
+                  "id": "55fe0b19-2d45-493a-88e5-f14c12ce319c",
+                  "name": "Quota exceeded or Lyro disabled",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/tickets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "tickets"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-55fe0b19-2d45-493a-88e5-f14c12ce319c"
+                },
+                {
+                  "id": "013d0d85-e35b-4232-b66f-16b548304f3c",
+                  "name": "Validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"contact\",\n      \"message_type\": \"public\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/lyro/tickets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lyro",
+                        "tickets"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-013d0d85-e35b-4232-b66f-16b548304f3c"
                 }
               ],
-              "body": "{\n  \"message_content\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "896a9018-64dd-4368-a679-210bc972dc23",
-              "name": "Quota exceeded or Lyro disabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "tickets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8132d09a-af00-4c55-85f1-688d1a78b9d8",
-              "name": "Validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lyro",
-                    "tickets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ticket_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"contact_email\": \"<email>\",\n  \"contact_name\": \"<string>\",\n  \"recipient_email\": \"<email>\",\n  \"messages\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"message_id\": \"<string>\",\n      \"author_type\": \"<string>\",\n      \"message_type\": \"<string>\",\n      \"message_content\": \"<string>\",\n      \"attachments\": [\n        \"<uri>\",\n        \"<uri>\"\n      ]\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-cc1be255-558a-471c-b936-40fe51065cf3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c93e64f0-4679-4d55-9af6-883eb70106e0",
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-c93e64f0-4679-4d55-9af6-883eb70106e0"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tidio.co",
-      "key": "baseUrl"
+      "id": "94a81fc8-acff-49f5-a03f-924ed784cc24",
+      "createdAt": "2026-10-21T20:56:05.000Z",
+      "updatedAt": "2026-10-21T20:56:05.000Z",
+      "uid": "35240-94a81fc8-acff-49f5-a03f-924ed784cc24"
     }
   ],
   "auth": {
@@ -939,25 +997,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Tidio-Openapi-Client-Id"
+        "value": "X-Tidio-Openapi-Client-Id",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "19ffc55c-6c95-4a94-aa76-051081668b87",
-    "name": "Tidio OpenAPI (REST) Contacts Lyro API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tidio.co"
     }
-  }
+  ]
 }

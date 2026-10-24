@@ -1,101 +1,96 @@
 {
+  "info": {
+    "_postman_id": "629ab823-814c-4986-833d-56acedf19805",
+    "name": "Tidio OpenAPI (REST) Departments API",
+    "description": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\nContact Support:\n Name: Tidio Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:55:57.000Z",
+    "updatedAt": "2026-10-21T20:55:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-629ab823-814c-4986-833d-56acedf19805"
+  },
   "item": [
     {
-      "id": "0fb21b28-ce7d-46b5-ad6d-d9ab4840d099",
-      "name": "Departments",
-      "description": {
-        "content": "Retrieve department information",
-        "type": "text/plain"
-      },
+      "name": "departments",
       "item": [
         {
-          "id": "b2574d17-6317-4d1d-973d-41269f0f8570",
           "name": "Get departments",
+          "id": "3252056d-7af6-4600-ba92-463ab2819d17",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get departments",
-            "description": {
-              "content": "Returns all departments including the default General department.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "departments"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/departments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            },
+            "description": "Returns all departments including the default General department."
           },
           "response": [
             {
-              "id": "ad2e8d06-589c-48e7-9faa-d239b78e6dcb",
+              "id": "3ab1645d-fec0-46a3-b77d-9932629eab99",
               "name": "List of departments",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "departments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Tidio-Openapi-Client-Id",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/departments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "departments"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"departments\": [\n    {\n      \"id\": \"2d91500d-3222-a934-f047-ff9598b7a198\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"c8929e79-b1ff-f24e-e11f-00a7e9b21af1\",\n      \"name\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"departments\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:55:58.000Z",
+              "updatedAt": "2026-10-21T20:55:58.000Z",
+              "uid": "35240-3ab1645d-fec0-46a3-b77d-9932629eab99"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:55:58.000Z",
+          "updatedAt": "2026-10-21T20:55:58.000Z",
+          "uid": "35240-3252056d-7af6-4600-ba92-463ab2819d17"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tidio.co",
-      "key": "baseUrl"
+      "id": "91be62fc-80d6-4153-9433-3802ed0dd10f",
+      "createdAt": "2026-10-21T20:55:58.000Z",
+      "updatedAt": "2026-10-21T20:55:58.000Z",
+      "uid": "35240-91be62fc-80d6-4153-9433-3802ed0dd10f"
     }
   ],
   "auth": {
@@ -103,25 +98,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Tidio-Openapi-Client-Id"
+        "value": "X-Tidio-Openapi-Client-Id",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f625be69-b623-47cd-826d-905fa06e5c40",
-    "name": "Tidio OpenAPI (REST) Contacts Departments API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tidio.co"
     }
-  }
+  ]
 }

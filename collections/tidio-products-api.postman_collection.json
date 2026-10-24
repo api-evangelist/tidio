@@ -1,406 +1,410 @@
 {
+  "info": {
+    "_postman_id": "b9247831-5e05-4436-8887-432c951abacc",
+    "name": "Tidio OpenAPI (REST) Products API",
+    "description": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\nContact Support:\n Name: Tidio Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:56:27.000Z",
+    "updatedAt": "2026-10-21T20:56:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9247831-5e05-4436-8887-432c951abacc"
+  },
   "item": [
     {
-      "id": "02308548-0fcb-438b-94f2-bc1fb442b760",
-      "name": "Products",
-      "description": {
-        "content": "Product catalog for Lyro AI recommendations",
-        "type": "text/plain"
-      },
+      "name": "products",
       "item": [
         {
-          "id": "df80d241-5948-446a-b445-9daa7ade46e9",
-          "name": "Upsert products",
-          "request": {
-            "name": "Upsert products",
-            "description": {
-              "content": "Upload or update up to 100 products for Lyro AI recommendations using batch processing. Products are processed all-or-nothing. Processing is asynchronous.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "products",
-                "batch"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number>\",\n      \"features\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "batch",
+          "item": [
             {
-              "id": "ffa9c913-59e4-42e9-a149-aff891d490b3",
-              "name": "Products accepted for processing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "products",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
+              "name": "Upsert products",
+              "id": "ee84b0af-446a-4a56-916b-04499749d559",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number>\",\n      \"features\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4d38bcd4-1497-4c2f-8e9c-e66217d9f76d",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "products",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number>\",\n      \"features\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6572d373-fdda-489b-bb4f-1c8e85ae5e9b",
-              "name": "Products import already initialized from e-commerce platform",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "products",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number>\",\n      \"features\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"visible\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number,null>\",\n      \"features\": {\n        \"cillum072\": \"<string>\",\n        \"nostrud_b4\": \"<string>\",\n        \"magna_c\": \"<string>\"\n      }\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c37e0e8d-992e-4092-99e7-4a1ee8909176",
-              "name": "Validation error",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "products",
-                    "batch"
-                  ],
+                  "raw": "{{baseUrl}}/products/batch",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "products",
+                    "batch"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number>\",\n      \"features\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Upload or update up to 100 products for Lyro AI recommendations using batch processing. Products are processed all-or-nothing. Processing is asynchronous."
               },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "e132d983-e771-4582-aa85-c3198b0ea6a6",
+                  "name": "Products accepted for processing",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"visible\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number,null>\",\n      \"features\": {\n        \"cillum072\": \"<string>\",\n        \"nostrud_b4\": \"<string>\",\n        \"magna_c\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-e132d983-e771-4582-aa85-c3198b0ea6a6"
+                },
+                {
+                  "id": "ca670a7e-91da-447c-bcd0-df04312512cf",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"visible\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number,null>\",\n      \"features\": {\n        \"cillum072\": \"<string>\",\n        \"nostrud_b4\": \"<string>\",\n        \"magna_c\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-ca670a7e-91da-447c-bcd0-df04312512cf"
+                },
+                {
+                  "id": "5807a663-067f-4782-abc6-7fc1d9b51356",
+                  "name": "Products import already initialized from e-commerce platform",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"visible\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number,null>\",\n      \"features\": {\n        \"cillum072\": \"<string>\",\n        \"nostrud_b4\": \"<string>\",\n        \"magna_c\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-5807a663-067f-4782-abc6-7fc1d9b51356"
+                },
+                {
+                  "id": "77ce632e-d832-4659-8c3b-edc6eff4cf98",
+                  "name": "Validation error",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"status\": \"visible\",\n      \"updated_at\": \"<dateTime>\",\n      \"image_url\": \"<uri>\",\n      \"vendor\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"barcode\": \"<string>\",\n      \"price\": \"<number,null>\",\n      \"features\": {\n        \"cillum072\": \"<string>\",\n        \"nostrud_b4\": \"<string>\",\n        \"magna_c\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-77ce632e-d832-4659-8c3b-edc6eff4cf98"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:56:27.000Z",
+              "updatedAt": "2026-10-21T20:56:27.000Z",
+              "uid": "35240-ee84b0af-446a-4a56-916b-04499749d559"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5dc555da-035f-4145-bd1c-1123dea9551f",
+          "createdAt": "2026-10-21T20:56:27.000Z",
+          "updatedAt": "2026-10-21T20:56:27.000Z",
+          "uid": "35240-5dc555da-035f-4145-bd1c-1123dea9551f"
         },
         {
-          "id": "751a1546-b4b2-495d-bdf1-135af3621168",
-          "name": "Delete product",
-          "request": {
-            "name": "Delete product",
-            "description": {
-              "content": "Permanently removes a product from Lyro AI recommendations. Deletion is irreversible and processed asynchronously.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "products",
-                ":productId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "productId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "{productId}",
+          "item": [
             {
-              "id": "6c9f38fb-69cd-4f01-a7cc-fd2d8ce46071",
-              "name": "Product deletion accepted",
-              "originalRequest": {
+              "name": "Delete product",
+              "id": "c6c9b203-e8d7-464a-8b76-aa041c496530",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
                 "url": {
+                  "raw": "{{baseUrl}}/products/:productId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "products",
                     ":productId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
+                      "id": "ecba940c-6c46-41b0-9384-0bd73843cffb",
                       "key": "productId",
+                      "value": "<integer>",
                       "description": "(Required) "
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
+                "description": "Permanently removes a product from Lyro AI recommendations. Deletion is irreversible and processed asynchronously."
               },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "80f0e739-24ca-4082-9fcf-460373260e96",
-              "name": "Product not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "products",
-                    ":productId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "productId",
-                      "description": "(Required) "
+                  "id": "bb7680da-c878-43ad-8bc2-3c134765db96",
+                  "name": "Product deletion accepted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:productId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId"
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-bb7680da-c878-43ad-8bc2-3c134765db96"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Tidio-Openapi-Client-Id",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "e4035013-bbfb-4395-b9de-7c84e62ef349",
+                  "name": "Product not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Tidio-Openapi-Client-Id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:productId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:56:27.000Z",
+                  "updatedAt": "2026-10-21T20:56:27.000Z",
+                  "uid": "35240-e4035013-bbfb-4395-b9de-7c84e62ef349"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:56:27.000Z",
+              "updatedAt": "2026-10-21T20:56:27.000Z",
+              "uid": "35240-c6c9b203-e8d7-464a-8b76-aa041c496530"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1c781e84-a737-4cca-8c99-5f9edd516562",
+          "createdAt": "2026-10-21T20:56:27.000Z",
+          "updatedAt": "2026-10-21T20:56:27.000Z",
+          "uid": "35240-1c781e84-a737-4cca-8c99-5f9edd516562"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tidio.co",
-      "key": "baseUrl"
+      "id": "aa4b0c9b-ee90-45de-a6b5-155a5c1f422c",
+      "createdAt": "2026-10-21T20:56:27.000Z",
+      "updatedAt": "2026-10-21T20:56:27.000Z",
+      "uid": "35240-aa4b0c9b-ee90-45de-a6b5-155a5c1f422c"
     }
   ],
   "auth": {
@@ -408,25 +412,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Tidio-Openapi-Client-Id"
+        "value": "X-Tidio-Openapi-Client-Id",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4c98cc3d-db46-449c-9fa9-0b3db35bf65b",
-    "name": "Tidio OpenAPI (REST) Contacts Products API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for managing contacts, conversations, tickets, operators, and Lyro AI data sources. Requires Plus or Premium plan for full access; Lyro AI plan grants access to Lyro-specific endpoints. Authentication uses paired X-Tidio-Openapi-Client-Id and X-Tidio-Openapi-Client-Secret headers. Rate limits range from 10 requests per minute (entry plans) to 120 requests per minute (Premium).\n\n\nContact Support:\n Name: Tidio Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tidio.co"
     }
-  }
+  ]
 }
